@@ -15,18 +15,18 @@ export class Geomtransformations {
       const level = +settings.level;
       switch (level) {
         case 0:
-          this.levelSettings = LEVEL1;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL1));
           break;
         case 1:
-          this.levelSettings = LEVEL2;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL2));
           break;
         case 2:
-          this.levelSettings = LEVEL3;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL3));
           break;
       }
     } else {
       console.warn("Уровень не выбран");
-      this.levelSettings = LEVEL1;
+      this.levelSettings = JSON.parse(JSON.stringify(LEVEL1));
     }
   }
 
@@ -40,6 +40,7 @@ export class Geomtransformations {
       this.domNode = domNode;
       this.stateRef = React.createRef();
       this.updateRootAndRender();
+
     } catch (e) {
       console.error(e);
     }
@@ -75,9 +76,9 @@ export class Geomtransformations {
   };
 
   loadSolution = function (solution) {
-    try {
+    try {  
       if (!solution) { return; }
-      this.levelSettings.figures = solution.figures;
+      this.levelSettings.figures = JSON.parse(JSON.stringify(solution.figures));
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);

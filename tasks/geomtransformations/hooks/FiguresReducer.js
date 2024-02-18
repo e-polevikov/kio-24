@@ -52,7 +52,7 @@ export function figuresReducer(figures, action) {
     );
 
     if (figureIsOutOfStageBoundaries(
-      reflectedPoints, STAGE_WIDTH, STAGE_HEIGHT
+      reflectedPoints, 1.5 * STAGE_WIDTH, STAGE_HEIGHT
     )) {
       return figures;
     }
@@ -81,7 +81,7 @@ export function figuresReducer(figures, action) {
   );
 
   if (figureIsOutOfStageBoundaries(
-    rotatedPoints, STAGE_WIDTH, STAGE_HEIGHT
+    rotatedPoints, 1.5 * STAGE_WIDTH, STAGE_HEIGHT
   )) {
     return figures;
   }

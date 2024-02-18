@@ -3,7 +3,7 @@ export const GRID_SIZE = {
   HEIGHT: 14
 };
 
-export const STAGE_WIDTH = 1280; // Math.max(1024, window.innerWidth) * 0.625;
+export const STAGE_WIDTH = 1024;
 export const GRID_INDENT = STAGE_WIDTH / GRID_SIZE.WIDTH;
 export const STAGE_HEIGHT = GRID_INDENT * GRID_SIZE.HEIGHT;
 

@@ -19,7 +19,6 @@ import { ActionControl } from '../ActionControl/ActionControl';
 import { Transformations } from '../Transformations/Transformations';
 import { Figure } from '../Figure/Figure';
 import { FigureImage } from '../Figure/FigureImage';
-import { ResultDisplay } from '../ResultDisplay/ResultDisplay';
 
 import { figuresReducer } from '../../hooks/FiguresReducer';
 import { figureImageReducer } from '../../hooks/FigureImageReducer';
@@ -33,10 +32,6 @@ export function GeomStage({ settings, stateRef, kioapi }) {
   const [linePoints, setLinePoints] = useState(LINE_POINTS);
   const [anglePoints, setAnglePoints] = useState(ANGLE_POINTS);
   const [transformation, setTransformation] = useState(TRANSFORMATIONS.REFLECT);
-
-  const [metrics, setMetrics] = useState({
-    similarity: 0, pathsLength: 0, cost: 0
-  });
 
   const [figures, figuresDispatch] = useReducer(figuresReducer, settings.figures);
   const [selectedFigureId, setSelectedFigureId] = useState(settings.figures[0].id);
@@ -87,7 +82,6 @@ export function GeomStage({ settings, stateRef, kioapi }) {
       )
     };
 
-    setMetrics(states.metrics);
     stateRef.current = states;
     kioapi.submitResult(states.metrics);
   }, figures.map((figure) => figure.stateIdx));
@@ -103,16 +97,13 @@ export function GeomStage({ settings, stateRef, kioapi }) {
         <ActionControl
           handleClick={handleAction}
         />
-        <ResultDisplay
-          metrics={metrics}
-        />
       </div>
 
       <div className={styles['stage']}>
-        <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT}>
+        <Stage width={1.5 * STAGE_WIDTH} height={STAGE_HEIGHT}>
           <Layer>
             <StageGrid
-              stageWidth={STAGE_WIDTH}
+              stageWidth={1.5 * STAGE_WIDTH}
               stageHeight={STAGE_HEIGHT}
               gridIndent={GRID_INDENT}
             />
@@ -137,7 +128,7 @@ export function GeomStage({ settings, stateRef, kioapi }) {
               setAnglePoints={setAnglePoints}
               isSelected={transformation !== TRANSFORMATIONS.REFLECT}
               handlePointMove={handleAction}
-              stageWidth={STAGE_WIDTH}
+              stageWidth={1.5 * STAGE_WIDTH}
               stageHeight={STAGE_HEIGHT}
               gridIndent={GRID_INDENT}
             />
@@ -146,7 +137,7 @@ export function GeomStage({ settings, stateRef, kioapi }) {
               setLinePoints={setLinePoints}
               isSelected={transformation === TRANSFORMATIONS.REFLECT}
               handlePointMove={handleAction}
-              stageWidth={STAGE_WIDTH}
+              stageWidth={1.5 * STAGE_WIDTH}
               stageHeight={STAGE_HEIGHT}
               gridIndent={GRID_INDENT}
             />

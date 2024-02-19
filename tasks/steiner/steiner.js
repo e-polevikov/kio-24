@@ -7,6 +7,57 @@ import { LEVEL1_SETTINGS } from './constants/Levels';
 import { LEVEL2_SETTINGS } from './constants/Levels';
 import { LEVEL3_SETTINGS } from './constants/Levels';
 
+function getTree(level) {
+  let settings;
+
+  if (level === 0) {
+    settings = LEVEL1_SETTINGS;
+  }
+
+  if (level === 1) {
+    settings = LEVEL2_SETTINGS;
+  }
+
+  if (level === 2) {
+    settings = LEVEL3_SETTINGS;
+  }
+
+  return JSON.parse(JSON.stringify(settings.initialTree));
+}
+
+function treeMatchLevel(tree, level) {
+  if (!tree) {
+    return false;
+  }
+
+  let numPredefinedPoints = tree.points.filter(
+    (point) => point.predefined
+  ).length
+
+  if (
+    level === 0 &&
+    numPredefinedPoints === LEVEL1_SETTINGS.initialTree.points.length
+  ) {
+    return true;
+  }
+
+  if (
+    level === 1 &&
+    numPredefinedPoints === LEVEL2_SETTINGS.initialTree.points.length
+  ) {
+    return true;
+  }
+
+  if (
+    level === 2 &&
+    numPredefinedPoints === LEVEL3_SETTINGS.initialTree.points.length
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 export class Steiner {
   constructor(settings) {
     this.settings = settings;
@@ -47,50 +98,55 @@ export class Steiner {
   };
 
   parameters = function () {
-    return [];
-    /*
     return [{
-      name: "cost",
-      title: "Количество преобразований",
-      ordering: "minimize",
-      view: "",
+      name: "connected",
+      title: "Соединены ли точки",
+      ordering: "maximize",
+      view: function (value) {
+        return value ? "Да" : "Нет";
+      },
     }, {
-      name: "pathsLength",
-      title: "Сумма длин путей",
+      name: "segmentsLength",
+      title: "Сумма длин отрезков",
       ordering: "minimize",
       view: ""
-    }]; */
+    }];
   };
 
   solution = function () {
     try {
+      console.log("solution()");
       return this.stateRef.current ?
-        { } :
-        { };
+        { tree: this.stateRef.current } :
+        { tree: this.levelSettings.initialTree };
     } catch (e) {
       console.error(e);
     }
   };
 
   loadSolution = function (solution) {
-    try {  
+    try {
       if (!solution) { return; }
-      /*
+
+      console.log("loadSolution()");
+      
       let level = +this.settings.level;
-      let figures;
+      let tree;
 
-      if (solution.figures.length === level + 2) {
-        figures = solution.figures;
-      } else if (!level) { // undefined or 0th level
-        figures = JSON.parse(JSON.stringify(LEVEL1.figures));
-      } else if (level === 1) {
-        figures = JSON.parse(JSON.stringify(LEVEL2.figures));
-      } else if (level === 2) {
-        figures = JSON.parse(JSON.stringify(LEVEL3.figures));
+      console.log(solution.tree);
+
+      if (level === undefined) {
+        tree = getTree(0);
+      } else if (treeMatchLevel(solution.tree, level)) {
+        tree = solution.tree;
+      } else {
+        tree = getTree(level);
       }
-      */
 
-      this.levelSettings.initialTree = JSON.parse(JSON.stringify(LEVEL1_SETTINGS.initialTree));
+      console.log(level);
+      console.log(tree);
+
+      this.levelSettings.initialTree = tree;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);

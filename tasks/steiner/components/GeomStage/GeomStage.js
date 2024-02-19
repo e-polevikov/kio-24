@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import { Stage, Layer } from 'react-konva';
 
 import { StageGrid } from '../StageGrid/StageGrid';
@@ -67,6 +67,15 @@ export function GeomStage({ settings, stateRef, kioapi }) {
       setSegment({...segment, visible: false });
     }
   }
+
+  useEffect(() => {
+    stateRef.current = tree;
+
+    kioapi.submitResult({
+      connected: connected(tree),
+      segmentsLength: getTotalLength(tree.segments)
+    });
+  }, [tree.segments.length]);
 
   return (
     <div>

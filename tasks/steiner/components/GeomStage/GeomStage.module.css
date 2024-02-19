@@ -1,0 +1,14 @@
+.geom-stage {
+  display: flex;
+}
+
+.stage {
+  border: 2px solid black;
+  margin: 5px;
+  width: 100%;
+  overflow: auto;
+}
+
+p {
+  font-size: 24px;
+}

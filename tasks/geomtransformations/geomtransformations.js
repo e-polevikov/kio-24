@@ -78,7 +78,7 @@ export class Geomtransformations {
   loadSolution = function (solution) {
     try {  
       if (!solution) { return; }
-      this.levelSettings.figures = JSON.parse(JSON.stringify(solution.figures));
+      this.levelSettings.figures = solution.figures;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);

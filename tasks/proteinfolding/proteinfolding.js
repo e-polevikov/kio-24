@@ -7,6 +7,68 @@ import { LEVEL1_SETTINGS } from './constants/Levels/Level1';
 import { LEVEL2_SETTINGS } from './constants/Levels/Level2';
 import { LEVEL3_SETTINGS } from './constants/Levels/Level3';
 
+import { initializeParticles } from './services/ParticlesGenerator';
+
+function getInitializedParticles(level) {
+  let settings;
+
+  if (level === 0) {
+    settings = LEVEL1_SETTINGS;
+  }
+
+  if (level === 1) {
+    settings = LEVEL2_SETTINGS;
+  }
+
+  if (level === 2) {
+    settings = LEVEL3_SETTINGS;
+  }
+
+  return initializeParticles(
+    settings.particlesColors,
+    settings.particleRadius,
+    settings.angles,
+    settings.isSplitted
+  );
+}
+
+function particlesMatchLevel(particles, level) {
+  if (!particles) {
+    return false;
+  }
+
+  if (
+    level === 0 &&
+    particles.length === LEVEL1_SETTINGS.particlesColors.length
+  ) {
+    return true;
+  }
+
+  if (
+    level === 1 &&
+    particles.length === LEVEL2_SETTINGS.particlesColors.length &&
+    particles[particles.length - 1].color ===
+    LEVEL2_SETTINGS.particlesColors[
+      LEVEL2_SETTINGS.particlesColors.length - 1
+    ]
+  ) {
+    return true;
+  }
+
+  if (
+    level === 2 &&
+    particles.length === LEVEL3_SETTINGS.particlesColors.length &&
+    particles[particles.length - 1].color ===
+    LEVEL3_SETTINGS.particlesColors[
+      LEVEL3_SETTINGS.particlesColors.length - 1
+    ]
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 export class Proteinfolding {
   constructor(settings) {
     this.settings = settings;
@@ -71,7 +133,18 @@ export class Proteinfolding {
   loadSolution = function (solution) {
     try {
       if (!solution) { return; }
-      this.initializedParticles = solution.particles;
+      let level = +this.settings.level;
+      let particles;
+
+      if (level === undefined) {
+        particles = getInitializedParticles(0);
+      } else if (particlesMatchLevel(solution.particles, level)) {
+        particles = solution.particles;
+      } else {
+        particles = getInitializedParticles(level);
+      }
+
+      this.initializedParticles = particles;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);

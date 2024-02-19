@@ -49,9 +49,15 @@ export class Geomtransformations {
   parameters = function () {
     return [{
       name: "similarity",
-      title: "Похожесть",
+      title: "Собрана ли фигура",
       ordering: "maximize",
-      view: ""
+      view: function (value) {
+        if (value.toFixed(1) === "100.0") {
+          return "Да";
+        }
+
+        return "Нет";
+      },
     }, {
       name: "cost",
       title: "Количество преобразований",
@@ -78,7 +84,20 @@ export class Geomtransformations {
   loadSolution = function (solution) {
     try {  
       if (!solution) { return; }
-      this.levelSettings.figures = solution.figures;
+      let level = +this.settings.level;
+      let figures;
+
+      if (solution.figures.length === level + 2) {
+        figures = solution.figures;
+      } else if (!level) { // undefined or 0th level
+        figures = JSON.parse(JSON.stringify(LEVEL1.figures));
+      } else if (level === 1) {
+        figures = JSON.parse(JSON.stringify(LEVEL2.figures));
+      } else if (level === 2) {
+        figures = JSON.parse(JSON.stringify(LEVEL3.figures));
+      }
+
+      this.levelSettings.figures = figures;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);

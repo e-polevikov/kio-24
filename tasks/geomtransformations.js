@@ -436,12 +436,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Transformations_Transformations__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../Transformations/Transformations */ "./tasks/geomtransformations/components/Transformations/Transformations.js");
 /* harmony import */ var _Figure_Figure__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../Figure/Figure */ "./tasks/geomtransformations/components/Figure/Figure.js");
 /* harmony import */ var _Figure_FigureImage__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../Figure/FigureImage */ "./tasks/geomtransformations/components/Figure/FigureImage.js");
-/* harmony import */ var _ResultDisplay_ResultDisplay__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../ResultDisplay/ResultDisplay */ "./tasks/geomtransformations/components/ResultDisplay/ResultDisplay.js");
-/* harmony import */ var _hooks_FiguresReducer__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../hooks/FiguresReducer */ "./tasks/geomtransformations/hooks/FiguresReducer.js");
-/* harmony import */ var _hooks_FigureImageReducer__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../hooks/FigureImageReducer */ "./tasks/geomtransformations/hooks/FigureImageReducer.js");
-/* harmony import */ var _services_GeomTransformations__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../services/GeomTransformations */ "./tasks/geomtransformations/services/GeomTransformations.js");
-/* harmony import */ var _services_GeomMetrics__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../services/GeomMetrics */ "./tasks/geomtransformations/services/GeomMetrics.js");
-/* harmony import */ var _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./GeomStage.module.css */ "./tasks/geomtransformations/components/GeomStage/GeomStage.module.css");
+/* harmony import */ var _hooks_FiguresReducer__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ../../hooks/FiguresReducer */ "./tasks/geomtransformations/hooks/FiguresReducer.js");
+/* harmony import */ var _hooks_FigureImageReducer__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../hooks/FigureImageReducer */ "./tasks/geomtransformations/hooks/FigureImageReducer.js");
+/* harmony import */ var _services_GeomTransformations__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../services/GeomTransformations */ "./tasks/geomtransformations/services/GeomTransformations.js");
+/* harmony import */ var _services_GeomMetrics__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ../../services/GeomMetrics */ "./tasks/geomtransformations/services/GeomMetrics.js");
+/* harmony import */ var _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./GeomStage.module.css */ "./tasks/geomtransformations/components/GeomStage/GeomStage.module.css");
 
 
 
@@ -477,7 +476,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function GeomStage(_ref) {
   var settings = _ref.settings,
     stateRef = _ref.stateRef,
@@ -494,24 +492,16 @@ function GeomStage(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     transformation = _useState6[0],
     setTransformation = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_12__.useState)({
-      similarity: 0,
-      pathsLength: 0,
-      cost: 0
-    }),
-    _useState8 = _slicedToArray(_useState7, 2),
-    metrics = _useState8[0],
-    setMetrics = _useState8[1];
-  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_12__.useReducer)(_hooks_FiguresReducer__WEBPACK_IMPORTED_MODULE_24__.figuresReducer, settings.figures),
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_12__.useReducer)(_hooks_FiguresReducer__WEBPACK_IMPORTED_MODULE_23__.figuresReducer, settings.figures),
     _useReducer2 = _slicedToArray(_useReducer, 2),
     figures = _useReducer2[0],
     figuresDispatch = _useReducer2[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_12__.useState)(settings.figures[0].id),
-    _useState10 = _slicedToArray(_useState9, 2),
-    selectedFigureId = _useState10[0],
-    setSelectedFigureId = _useState10[1];
-  var _useReducer3 = (0,react__WEBPACK_IMPORTED_MODULE_12__.useReducer)(_hooks_FigureImageReducer__WEBPACK_IMPORTED_MODULE_25__.figureImageReducer, {
-      points: (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_26__.reflectPoints)(settings.figures[0].points[0], linePoints)
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_12__.useState)(settings.figures[0].id),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectedFigureId = _useState8[0],
+    setSelectedFigureId = _useState8[1];
+  var _useReducer3 = (0,react__WEBPACK_IMPORTED_MODULE_12__.useReducer)(_hooks_FigureImageReducer__WEBPACK_IMPORTED_MODULE_24__.figureImageReducer, {
+      points: (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_25__.reflectPoints)(settings.figures[0].points[0], linePoints)
     }),
     _useReducer4 = _slicedToArray(_useReducer3, 2),
     figureImage = _useReducer4[0],
@@ -545,33 +535,30 @@ function GeomStage(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_12__.useEffect)(function () {
     var states = {
       figures: figures,
-      metrics: (0,_services_GeomMetrics__WEBPACK_IMPORTED_MODULE_27__.calcMetrics)(figures, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT, settings.figuresArea, settings.minFiguresPerimeter)
+      metrics: (0,_services_GeomMetrics__WEBPACK_IMPORTED_MODULE_26__.calcMetrics)(figures, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT, settings.figuresArea, settings.minFiguresPerimeter)
     };
-    setMetrics(states.metrics);
     stateRef.current = states;
     kioapi.submitResult(states.metrics);
   }, figures.map(function (figure) {
     return figure.stateIdx;
   }));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement("div", {
-    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_28__["default"]["geom-stage"]
+    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_27__["default"]["geom-stage"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement("div", {
-    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_28__["default"].panel
+    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_27__["default"].panel
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Transformations_Transformations__WEBPACK_IMPORTED_MODULE_20__.Transformations, {
     transformation: transformation,
     setTransformation: setTransformation,
     handleChange: handleAction
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_ActionControl_ActionControl__WEBPACK_IMPORTED_MODULE_19__.ActionControl, {
     handleClick: handleAction
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_ResultDisplay_ResultDisplay__WEBPACK_IMPORTED_MODULE_23__.ResultDisplay, {
-    metrics: metrics
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement("div", {
-    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_28__["default"].stage
+    className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_27__["default"].stage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_13__.Stage, {
-    width: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    width: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     height: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_13__.Layer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_StageGrid_StageGrid__WEBPACK_IMPORTED_MODULE_16__.StageGrid, {
-    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Figure_FigureImage__WEBPACK_IMPORTED_MODULE_22__.FigureImage, {
@@ -593,7 +580,7 @@ function GeomStage(_ref) {
     setAnglePoints: setAnglePoints,
     isSelected: transformation !== _constants_Transformations__WEBPACK_IMPORTED_MODULE_15__.TRANSFORMATIONS.REFLECT,
     handlePointMove: handleAction,
-    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Line_Line__WEBPACK_IMPORTED_MODULE_17__.Line, {
@@ -601,7 +588,7 @@ function GeomStage(_ref) {
     setLinePoints: setLinePoints,
     isSelected: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_15__.TRANSFORMATIONS.REFLECT,
     handlePointMove: handleAction,
-    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   })))));
@@ -837,66 +824,6 @@ function Line(_ref) {
 
 /***/ }),
 
-/***/ "./tasks/geomtransformations/components/ResultDisplay/ResultDisplay.js":
-/*!*****************************************************************************!*\
-  !*** ./tasks/geomtransformations/components/ResultDisplay/ResultDisplay.js ***!
-  \*****************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ResultDisplay": () => (/* binding */ ResultDisplay)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.number.to-fixed.js */ "./node_modules/core-js/modules/es.number.to-fixed.js");
-/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function ResultDisplay(_ref) {
-  var metrics = _ref.metrics;
-  var tableStyle = {
-    border: "1px solid black",
-    padding: "8px",
-    margin: "2px",
-    width: "100%",
-    textAlign: "center",
-    borderCollapse: "collapse"
-  };
-  var tableDataStyle = {
-    border: "1px solid black",
-    padding: "2px",
-    width: "33%",
-    height: "50px"
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    style: {
-      fontSize: "20px"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h2", {
-    style: {
-      textAlign: "center"
-    }
-  }, "\u0420\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("table", {
-    style: tableStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "S")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "L")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("b", null, "C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, metrics.similarity.toFixed(3)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, metrics.pathsLength.toFixed(3)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, metrics.cost)))));
-}
-
-/***/ }),
-
 /***/ "./tasks/geomtransformations/components/StageGrid/StageGrid.js":
 /*!*********************************************************************!*\
   !*** ./tasks/geomtransformations/components/StageGrid/StageGrid.js ***!
@@ -1126,7 +1053,7 @@ var GRID_SIZE = {
   WIDTH: 20,
   HEIGHT: 14
 };
-var STAGE_WIDTH = Math.max(1024, window.innerWidth) * 0.625;
+var STAGE_WIDTH = 1024;
 var GRID_INDENT = STAGE_WIDTH / GRID_SIZE.WIDTH;
 var STAGE_HEIGHT = GRID_INDENT * GRID_SIZE.HEIGHT;
 var ANGLE_POINTS = [{
@@ -1172,7 +1099,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Figures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Figures */ "./tasks/geomtransformations/constants/Figures.js");
 
-var FIGURES = [{
+var LEVEL1_FIGURES = [{
   id: 1,
   color: _Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.COLOR,
   points: [_Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.POINTS],
@@ -1188,7 +1115,7 @@ var FIGURES = [{
 var MIN_FIGURES_PERIMETER = 12;
 var FIGURES_AREA = 8;
 var LEVEL1 = {
-  figures: FIGURES,
+  figures: LEVEL1_FIGURES,
   figuresArea: FIGURES_AREA,
   minFiguresPerimeter: MIN_FIGURES_PERIMETER
 };
@@ -1204,14 +1131,11 @@ var LEVEL1 = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FIGURES": () => (/* binding */ FIGURES),
-/* harmony export */   "FIGURES_AREA": () => (/* binding */ FIGURES_AREA),
-/* harmony export */   "LEVEL2": () => (/* binding */ LEVEL2),
-/* harmony export */   "MIN_FIGURES_PERIMETER": () => (/* binding */ MIN_FIGURES_PERIMETER)
+/* harmony export */   "LEVEL2": () => (/* binding */ LEVEL2)
 /* harmony export */ });
 /* harmony import */ var _Figures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Figures */ "./tasks/geomtransformations/constants/Figures.js");
 
-var FIGURES = [{
+var LEVEL2_FIGURES = [{
   id: 1,
   color: _Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.COLOR,
   points: [_Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.POINTS],
@@ -1233,7 +1157,7 @@ var FIGURES = [{
 var MIN_FIGURES_PERIMETER = 16;
 var FIGURES_AREA = 16;
 var LEVEL2 = {
-  figures: FIGURES,
+  figures: LEVEL2_FIGURES,
   figuresArea: FIGURES_AREA,
   minFiguresPerimeter: MIN_FIGURES_PERIMETER
 };
@@ -1249,14 +1173,11 @@ var LEVEL2 = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "FIGURES": () => (/* binding */ FIGURES),
-/* harmony export */   "FIGURES_AREA": () => (/* binding */ FIGURES_AREA),
-/* harmony export */   "LEVEL3": () => (/* binding */ LEVEL3),
-/* harmony export */   "MIN_FIGURES_PERIMETER": () => (/* binding */ MIN_FIGURES_PERIMETER)
+/* harmony export */   "LEVEL3": () => (/* binding */ LEVEL3)
 /* harmony export */ });
 /* harmony import */ var _Figures__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Figures */ "./tasks/geomtransformations/constants/Figures.js");
 
-var FIGURES = [{
+var LEVEL3_FIGURES = [{
   id: 1,
   color: _Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.COLOR,
   points: [_Figures__WEBPACK_IMPORTED_MODULE_0__.FIGURE1.POINTS],
@@ -1284,7 +1205,7 @@ var FIGURES = [{
 var MIN_FIGURES_PERIMETER = 16;
 var FIGURES_AREA = 16;
 var LEVEL3 = {
-  figures: FIGURES,
+  figures: LEVEL3_FIGURES,
   figuresArea: FIGURES_AREA,
   minFiguresPerimeter: MIN_FIGURES_PERIMETER
 };
@@ -1309,9 +1230,9 @@ var TRANSFORMATIONS = {
   REFLECT: '2'
 };
 var COST = {
-  '2': 2,
-  '0': 3,
-  '1': 3
+  '2': 1,
+  '0': 1,
+  '1': 1
 };
 
 /***/ }),
@@ -1340,7 +1261,7 @@ function figureImageReducer(figureImage, action) {
   var points = figure.points[figure.stateIdx];
   if (action.type === _constants_Actions__WEBPACK_IMPORTED_MODULE_0__.ACTIONS.APPLY) {
     points = figureImage.points;
-    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_3__.figureIsOutOfStageBoundaries)(points, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_HEIGHT)) {
+    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_3__.figureIsOutOfStageBoundaries)(points, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_HEIGHT)) {
       return figureImage;
     }
   }
@@ -1422,7 +1343,7 @@ function figuresReducer(figures, action) {
   }
   if (action.states.transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_3__.TRANSFORMATIONS.REFLECT) {
     var reflectedPoints = (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.reflectPoints)(updatedFigure.points[updatedFigure.stateIdx], action.states.linePoints);
-    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(reflectedPoints, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
+    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(reflectedPoints, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
       return figures;
     }
     updatedFigure.points = updatedFigure.points.slice(0, updatedFigure.stateIdx + 1);
@@ -1434,7 +1355,7 @@ function figuresReducer(figures, action) {
   }
   var clockwise = action.states.transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_3__.TRANSFORMATIONS.ROTATE_CLOCKWISE;
   var rotatedPoints = (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.rotatePoints)(updatedFigure.points[updatedFigure.stateIdx], action.states.anglePoints, clockwise);
-  if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(rotatedPoints, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
+  if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(rotatedPoints, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
     return figures;
   }
   updatedFigure.points = updatedFigure.points.slice(0, updatedFigure.stateIdx + 1);
@@ -1464,43 +1385,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
 /* harmony import */ var core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_slice_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
-/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.array.flat.js */ "./node_modules/core-js/modules/es.array.flat.js");
-/* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat.js */ "./node_modules/core-js/modules/es.array.unscopables.flat.js");
-/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
-/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
-/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
-/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
-/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
-/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
-/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
-/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
-/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var polybooljs__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! polybooljs */ "./node_modules/polybooljs/index.js");
-/* harmony import */ var polybooljs__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(polybooljs__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var geometric__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! geometric */ "./node_modules/geometric/index.js");
-/* harmony import */ var _constants_Transformations__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../constants/Transformations */ "./tasks/geomtransformations/constants/Transformations.js");
-/* harmony import */ var _constants_Figures__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../constants/Figures */ "./tasks/geomtransformations/constants/Figures.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.number.constructor.js */ "./node_modules/core-js/modules/es.number.constructor.js");
+/* harmony import */ var core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_constructor_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/es.number.to-fixed.js */ "./node_modules/core-js/modules/es.number.to-fixed.js");
+/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+/* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es.array.flat.js */ "./node_modules/core-js/modules/es.array.flat.js");
+/* harmony import */ var core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_flat_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.unscopables.flat.js */ "./node_modules/core-js/modules/es.array.unscopables.flat.js");
+/* harmony import */ var core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_unscopables_flat_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+/* harmony import */ var core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+/* harmony import */ var core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_description_js__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! core-js/modules/es.symbol.iterator.js */ "./node_modules/core-js/modules/es.symbol.iterator.js");
+/* harmony import */ var core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_symbol_iterator_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+/* harmony import */ var core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_iterator_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! core-js/modules/es.string.iterator.js */ "./node_modules/core-js/modules/es.string.iterator.js");
+/* harmony import */ var core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_iterator_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator.js */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! core-js/modules/es.function.name.js */ "./node_modules/core-js/modules/es.function.name.js");
+/* harmony import */ var core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_function_name_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! core-js/modules/es.array.from.js */ "./node_modules/core-js/modules/es.array.from.js");
+/* harmony import */ var core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_from_js__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+/* harmony import */ var core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_regexp_exec_js__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var polybooljs__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! polybooljs */ "./node_modules/polybooljs/index.js");
+/* harmony import */ var polybooljs__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(polybooljs__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var geometric__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! geometric */ "./node_modules/geometric/index.js");
+/* harmony import */ var _constants_Transformations__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../constants/Transformations */ "./tasks/geomtransformations/constants/Transformations.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -1526,13 +1451,13 @@ function calcMetrics(figures, gridIndent, figuresArea, minFiguresPerimeter) {
     pathsLength += getPathLength(figures[i].points.slice(0, figures[i].stateIdx + 1), gridIndent);
     for (var j = 0; j < figures[i].stateIdx; j++) {
       var transformation = figures[i].transformations[j];
-      cost += _constants_Transformations__WEBPACK_IMPORTED_MODULE_16__.COST[transformation];
+      cost += _constants_Transformations__WEBPACK_IMPORTED_MODULE_18__.COST[transformation];
     }
   }
   var similarity = getSimilarity(figures, gridIndent, figuresArea, minFiguresPerimeter);
   return {
-    similarity: similarity,
-    pathsLength: pathsLength,
+    similarity: Number(similarity.toFixed(3)),
+    pathsLength: Number(pathsLength.toFixed(3)),
     cost: cost
   };
 }
@@ -1546,21 +1471,21 @@ function getSimilarity(figures, gridIndent, figuresArea, minFiguresPerimeter) {
   var figuresXor = figuresPolygons[0];
   var figuresUnion = figuresPolygons[0];
   for (var i = 1; i < figuresPolygons.length; i++) {
-    figuresXor = polybooljs__WEBPACK_IMPORTED_MODULE_14__.xor(figuresXor, figuresPolygons[i]);
-    figuresUnion = polybooljs__WEBPACK_IMPORTED_MODULE_14__.union(figuresUnion, figuresPolygons[i]);
+    figuresXor = polybooljs__WEBPACK_IMPORTED_MODULE_16__.xor(figuresXor, figuresPolygons[i]);
+    figuresUnion = polybooljs__WEBPACK_IMPORTED_MODULE_16__.union(figuresUnion, figuresPolygons[i]);
   }
   var figuresXorArea = 0;
   for (var _i = 0; _i < figuresXor.regions.length; _i++) {
     var polygon = normalizePoints(figuresXor.regions[_i], gridIndent);
-    figuresXorArea += geometric__WEBPACK_IMPORTED_MODULE_15__.polygonArea(polygon);
+    figuresXorArea += geometric__WEBPACK_IMPORTED_MODULE_17__.polygonArea(polygon);
   }
-  var convexHull = normalizePoints(geometric__WEBPACK_IMPORTED_MODULE_15__.polygonHull(figuresUnion.regions.flat()), gridIndent);
-  var convexHullArea = geometric__WEBPACK_IMPORTED_MODULE_15__.polygonArea(convexHull);
+  var convexHull = normalizePoints(geometric__WEBPACK_IMPORTED_MODULE_17__.polygonHull(figuresUnion.regions.flat()), gridIndent);
+  var convexHullArea = geometric__WEBPACK_IMPORTED_MODULE_17__.polygonArea(convexHull);
   var convexHullPerimeter = getConvexHullPerimeter(convexHull);
   var figuresIntersect = false;
   for (var _i2 = 0; _i2 < figuresPolygons.length - 1; _i2++) {
     for (var j = _i2 + 1; j < figuresPolygons.length; j++) {
-      var intersection = polybooljs__WEBPACK_IMPORTED_MODULE_14__.intersect(figuresPolygons[_i2], figuresPolygons[j]);
+      var intersection = polybooljs__WEBPACK_IMPORTED_MODULE_16__.intersect(figuresPolygons[_i2], figuresPolygons[j]);
       if (intersection.regions.length > 0) {
         figuresIntersect = true;
         break;
@@ -1605,9 +1530,9 @@ function getConvexHull(figures) {
   });
   var figuresUnion = figuresPolygons[0];
   for (var i = 1; i < figuresPolygons.length; i++) {
-    figuresUnion = polybooljs__WEBPACK_IMPORTED_MODULE_14__.union(figuresUnion, figuresPolygons[i]);
+    figuresUnion = polybooljs__WEBPACK_IMPORTED_MODULE_16__.union(figuresUnion, figuresPolygons[i]);
   }
-  var convexHull = geometric__WEBPACK_IMPORTED_MODULE_15__.polygonHull(figuresUnion.regions.flat());
+  var convexHull = geometric__WEBPACK_IMPORTED_MODULE_17__.polygonHull(figuresUnion.regions.flat());
   return convexHull.flat();
 }
 function getPathLength(figurePoints, gridIndent) {
@@ -77900,21 +77825,22 @@ var Geomtransformations = /*#__PURE__*/_createClass(function Geomtransformations
   _defineProperty(this, "parameters", function () {
     return [{
       name: "similarity",
-      title: "Похожесть",
+      title: "Собрана ли фигура",
       ordering: "maximize",
       view: function view(value) {
-        return value.toFixed(3);
-      }
-    }, {
-      name: "pathsLength",
-      title: "Сумма длин путей",
-      ordering: "minimize",
-      view: function view(value) {
-        return value.toFixed(3);
+        if (value.toFixed(1) === "100.0") {
+          return "Да";
+        }
+        return "Нет";
       }
     }, {
       name: "cost",
-      title: "Стоимость преобразований",
+      title: "Количество преобразований",
+      ordering: "minimize",
+      view: ""
+    }, {
+      name: "pathsLength",
+      title: "Сумма длин путей",
       ordering: "minimize",
       view: ""
     }];
@@ -77935,7 +77861,19 @@ var Geomtransformations = /*#__PURE__*/_createClass(function Geomtransformations
       if (!solution) {
         return;
       }
-      this.levelSettings.figures = solution.figures;
+      var level = +this.settings.level;
+      var figures;
+      if (solution.figures.length === level + 2) {
+        figures = solution.figures;
+      } else if (!level) {
+        // undefined or 0th level
+        figures = JSON.parse(JSON.stringify(_constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1.figures));
+      } else if (level === 1) {
+        figures = JSON.parse(JSON.stringify(_constants_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2.figures));
+      } else if (level === 2) {
+        figures = JSON.parse(JSON.stringify(_constants_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3.figures));
+      }
+      this.levelSettings.figures = figures;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);
@@ -77957,18 +77895,18 @@ var Geomtransformations = /*#__PURE__*/_createClass(function Geomtransformations
     var level = +settings.level;
     switch (level) {
       case 0:
-        this.levelSettings = _constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1));
         break;
       case 1:
-        this.levelSettings = _constants_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2));
         break;
       case 2:
-        this.levelSettings = _constants_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3));
         break;
     }
   } else {
     console.warn("Уровень не выбран");
-    this.levelSettings = _constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1;
+    this.levelSettings = JSON.parse(JSON.stringify(_constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1));
   }
 });
 })();

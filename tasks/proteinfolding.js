@@ -261,61 +261,6 @@ function RotationControl(_ref) {
 
 /***/ }),
 
-/***/ "./tasks/proteinfolding/components/EnergiesTable/EnergiesTable.js":
-/*!************************************************************************!*\
-  !*** ./tasks/proteinfolding/components/EnergiesTable/EnergiesTable.js ***!
-  \************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "EnergiesTable": () => (/* binding */ EnergiesTable)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.number.to-fixed.js */ "./node_modules/core-js/modules/es.number.to-fixed.js");
-/* harmony import */ var core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_number_to_fixed_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function EnergiesTable(_ref) {
-  var energies = _ref.energies;
-  var tableStyle = {
-    border: "1px solid black",
-    padding: "8px",
-    margin: "2px",
-    width: "100%",
-    textAlign: "center",
-    borderCollapse: "collapse"
-  };
-  var tableDataStyle = {
-    border: "1px solid black",
-    fontSize: "20px"
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("div", {
-    style: {
-      paddingBottom: "6px"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("h3", {
-    style: {
-      textAlign: "center",
-      fontSize: "28px"
-    }
-  }, " \u042D\u043D\u0435\u0440\u0433\u0438\u044F "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("table", {
-    style: tableStyle
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tbody", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, "\u0422\u0435\u043A\u0443\u0449\u0430\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, energies.current.toFixed(3))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, "\u041C\u0438\u043D\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createElement("td", {
-    style: tableDataStyle
-  }, energies.minimal.toFixed(3))))));
-}
-
-/***/ }),
-
 /***/ "./tasks/proteinfolding/components/FoldingStage/FoldingStage.js":
 /*!**********************************************************************!*\
   !*** ./tasks/proteinfolding/components/FoldingStage/FoldingStage.js ***!
@@ -356,12 +301,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ParticlesChain_ParticlesChain__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../ParticlesChain/ParticlesChain */ "./tasks/proteinfolding/components/ParticlesChain/ParticlesChain.js");
 /* harmony import */ var _Controls_RotationControl__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../Controls/RotationControl */ "./tasks/proteinfolding/components/Controls/RotationControl.js");
 /* harmony import */ var _Controls_MovementControl__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../Controls/MovementControl */ "./tasks/proteinfolding/components/Controls/MovementControl.js");
-/* harmony import */ var _EnergiesTable_EnergiesTable__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../EnergiesTable/EnergiesTable */ "./tasks/proteinfolding/components/EnergiesTable/EnergiesTable.js");
-/* harmony import */ var _PowersTable_PowersTable__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../PowersTable/PowersTable */ "./tasks/proteinfolding/components/PowersTable/PowersTable.js");
-/* harmony import */ var _MoveAllCheckbox_MoveAllCheckbox__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../MoveAllCheckbox/MoveAllCheckbox */ "./tasks/proteinfolding/components/MoveAllCheckbox/MoveAllCheckbox.js");
-/* harmony import */ var _services_EnergyCalculator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../services/EnergyCalculator */ "./tasks/proteinfolding/services/EnergyCalculator.js");
-/* harmony import */ var _services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../services/ParticlesGenerator */ "./tasks/proteinfolding/services/ParticlesGenerator.js");
-/* harmony import */ var _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./FoldingStage.module.css */ "./tasks/proteinfolding/components/FoldingStage/FoldingStage.module.css");
+/* harmony import */ var _PowersTable_PowersTable__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../PowersTable/PowersTable */ "./tasks/proteinfolding/components/PowersTable/PowersTable.js");
+/* harmony import */ var _MoveAllCheckbox_MoveAllCheckbox__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../MoveAllCheckbox/MoveAllCheckbox */ "./tasks/proteinfolding/components/MoveAllCheckbox/MoveAllCheckbox.js");
+/* harmony import */ var _services_EnergyCalculator__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../services/EnergyCalculator */ "./tasks/proteinfolding/services/EnergyCalculator.js");
+/* harmony import */ var _services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../../services/ParticlesGenerator */ "./tasks/proteinfolding/services/ParticlesGenerator.js");
+/* harmony import */ var _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./FoldingStage.module.css */ "./tasks/proteinfolding/components/FoldingStage/FoldingStage.module.css");
 
 
 
@@ -391,7 +335,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function FoldingStage(_ref) {
   var settings = _ref.settings,
     initializedParticles = _ref.initializedParticles,
@@ -405,11 +348,11 @@ function FoldingStage(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     pivotParticleId = _useState4[0],
     setPivotParticleId = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_11__.useState)(initializedParticles ? initializedParticles : (0,_services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_21__.initializeParticles)(settings.particlesColors, settings.particleRadius, settings.angles, settings.isSplitted)),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_11__.useState)(initializedParticles ? initializedParticles : (0,_services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_20__.initializeParticles)(settings.particlesColors, settings.particleRadius, settings.angles, settings.isSplitted)),
     _useState6 = _slicedToArray(_useState5, 2),
     particles = _useState6[0],
     setParticles = _useState6[1];
-  var energy = (0,_services_EnergyCalculator__WEBPACK_IMPORTED_MODULE_20__.calculateTotalEnergy)(particles, settings.powers);
+  var energy = (0,_services_EnergyCalculator__WEBPACK_IMPORTED_MODULE_19__.calculateTotalEnergy)(particles, settings.powers);
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_11__.useState)({
       initial: energy,
       current: energy,
@@ -425,19 +368,13 @@ function FoldingStage(_ref) {
     energy: energy
   });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
-    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_22__["default"]["folding-stage"]
+    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_21__["default"]["folding-stage"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
-    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_22__["default"]["params-panel"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_PowersTable_PowersTable__WEBPACK_IMPORTED_MODULE_18__.PowersTable, {
+    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_21__["default"]["params-panel"]
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_PowersTable_PowersTable__WEBPACK_IMPORTED_MODULE_17__.PowersTable, {
     powers: settings.powers
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_EnergiesTable_EnergiesTable__WEBPACK_IMPORTED_MODULE_17__.EnergiesTable, {
-    energies: energies
-  }), settings.isSplitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_MoveAllCheckbox_MoveAllCheckbox__WEBPACK_IMPORTED_MODULE_19__.MoveAllCheckbox, {
-    setMoveAll: setMoveAll
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement((react__WEBPACK_IMPORTED_MODULE_11___default().Fragment), null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
-    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_22__["default"].stage
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
-    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_22__["default"]["controls-panel"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
+    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_21__["default"]["controls-panel"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_Controls_RotationControl__WEBPACK_IMPORTED_MODULE_15__.RotationControl, {
     particles: particles,
     setParticles: setParticles,
@@ -449,7 +386,7 @@ function FoldingStage(_ref) {
     powers: settings.powers,
     kioapi: kioapi,
     stateRef: stateRef
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_Controls_MovementControl__WEBPACK_IMPORTED_MODULE_16__.MovementControl, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_Controls_MovementControl__WEBPACK_IMPORTED_MODULE_16__.MovementControl, {
     particles: particles,
     setParticles: setParticles,
     pivotParticleId: pivotParticleId,
@@ -461,7 +398,11 @@ function FoldingStage(_ref) {
     powers: settings.powers,
     kioapi: kioapi,
     stateRef: stateRef
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_12__.Stage, {
+  })), settings.isSplitted ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_MoveAllCheckbox_MoveAllCheckbox__WEBPACK_IMPORTED_MODULE_18__.MoveAllCheckbox, {
+    setMoveAll: setMoveAll
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement((react__WEBPACK_IMPORTED_MODULE_11___default().Fragment), null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement("div", {
+    className: _FoldingStage_module_css__WEBPACK_IMPORTED_MODULE_21__["default"].stage
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_12__.Stage, {
     width: _constants_FoldingStage__WEBPACK_IMPORTED_MODULE_13__.STAGE_WIDTH,
     height: _constants_FoldingStage__WEBPACK_IMPORTED_MODULE_13__.STAGE_HEIGHT
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_12__.Layer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_11___default().createElement(_ParticlesChain_ParticlesChain__WEBPACK_IMPORTED_MODULE_14__.ParticlesChain, {
@@ -739,8 +680,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "STAGE_HEIGHT": () => (/* binding */ STAGE_HEIGHT),
 /* harmony export */   "STAGE_WIDTH": () => (/* binding */ STAGE_WIDTH)
 /* harmony export */ });
-var STAGE_WIDTH = window.innerWidth * 0.75;
-var STAGE_HEIGHT = STAGE_WIDTH * 0.525;
+var STAGE_WIDTH = 1440;
+var STAGE_HEIGHT = STAGE_WIDTH * 0.5;
 
 /***/ }),
 
@@ -74115,6 +74056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./constants/Levels/Level1 */ "./tasks/proteinfolding/constants/Levels/Level1.js");
 /* harmony import */ var _constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./constants/Levels/Level2 */ "./tasks/proteinfolding/constants/Levels/Level2.js");
 /* harmony import */ var _constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./constants/Levels/Level3 */ "./tasks/proteinfolding/constants/Levels/Level3.js");
+/* harmony import */ var _services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./services/ParticlesGenerator */ "./tasks/proteinfolding/services/ParticlesGenerator.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 
@@ -74139,6 +74081,35 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+
+function getInitializedParticles(level) {
+  var settings;
+  if (level === 0) {
+    settings = _constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS;
+  }
+  if (level === 1) {
+    settings = _constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS;
+  }
+  if (level === 2) {
+    settings = _constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS;
+  }
+  return (0,_services_ParticlesGenerator__WEBPACK_IMPORTED_MODULE_17__.initializeParticles)(settings.particlesColors, settings.particleRadius, settings.angles, settings.isSplitted);
+}
+function particlesMatchLevel(particles, level) {
+  if (!particles) {
+    return false;
+  }
+  if (level === 0 && particles.length === _constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS.particlesColors.length) {
+    return true;
+  }
+  if (level === 1 && particles.length === _constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS.particlesColors.length && particles[particles.length - 1].color === _constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS.particlesColors[_constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS.particlesColors.length - 1]) {
+    return true;
+  }
+  if (level === 2 && particles.length === _constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS.particlesColors.length && particles[particles.length - 1].color === _constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS.particlesColors[_constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS.particlesColors.length - 1]) {
+    return true;
+  }
+  return false;
+}
 var Proteinfolding = /*#__PURE__*/_createClass(function Proteinfolding(settings) {
   _classCallCheck(this, Proteinfolding);
   _defineProperty(this, "id", function () {
@@ -74184,7 +74155,16 @@ var Proteinfolding = /*#__PURE__*/_createClass(function Proteinfolding(settings)
       if (!solution) {
         return;
       }
-      this.initializedParticles = solution.particles;
+      var level = +this.settings.level;
+      var particles;
+      if (level === undefined) {
+        particles = getInitializedParticles(0);
+      } else if (particlesMatchLevel(solution.particles, level)) {
+        particles = solution.particles;
+      } else {
+        particles = getInitializedParticles(level);
+      }
+      this.initializedParticles = particles;
       this.updateRootAndRender();
     } catch (e) {
       console.error(e);
@@ -74207,18 +74187,18 @@ var Proteinfolding = /*#__PURE__*/_createClass(function Proteinfolding(settings)
     var level = +settings.level;
     switch (level) {
       case 0:
-        this.levelSettings = _constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS));
         break;
       case 1:
-        this.levelSettings = _constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Levels_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2_SETTINGS));
         break;
       case 2:
-        this.levelSettings = _constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS;
+        this.levelSettings = JSON.parse(JSON.stringify(_constants_Levels_Level3__WEBPACK_IMPORTED_MODULE_16__.LEVEL3_SETTINGS));
         break;
     }
   } else {
     console.warn("Уровень не выбран");
-    this.levelSettings = _constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS;
+    this.levelSettings = JSON.parse(JSON.stringify(_constants_Levels_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS));
   }
 });
 })();

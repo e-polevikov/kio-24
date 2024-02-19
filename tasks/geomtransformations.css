@@ -40,12 +40,15 @@
 
 .t7CgDiSVKbg4JYEgVJXN {
   border: solid black 2px;
+  overflow: auto;
   padding: 10px;
   margin: 6px;
-  width: 30%; }
+  width: 20%; }
 
 .sbPnI_oLpT20Nv5mmb9E {
   border: solid black 2px;
+  overflow: auto;
+  width: 80%;
   margin: 6px;
   margin-left: 12px; }
 

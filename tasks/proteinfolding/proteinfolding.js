@@ -15,18 +15,18 @@ export class Proteinfolding {
       const level = +settings.level;
       switch (level) {
         case 0:
-          this.levelSettings = LEVEL1_SETTINGS;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL1_SETTINGS));
           break;
         case 1:
-          this.levelSettings = LEVEL2_SETTINGS;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL2_SETTINGS));
           break;
         case 2:
-          this.levelSettings = LEVEL3_SETTINGS;
+          this.levelSettings = JSON.parse(JSON.stringify(LEVEL3_SETTINGS));
           break;
       }
     } else {
       console.warn("Уровень не выбран");
-      this.levelSettings = LEVEL1_SETTINGS;
+      this.levelSettings = JSON.parse(JSON.stringify(LEVEL1_SETTINGS));
     }
   }
 

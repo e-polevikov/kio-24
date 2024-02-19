@@ -7,7 +7,6 @@ import { STAGE_WIDTH, STAGE_HEIGHT } from '../../constants/FoldingStage';
 import { ParticlesChain } from '../ParticlesChain/ParticlesChain';
 import { RotationControl } from '../Controls/RotationControl';
 import { MovementControl } from '../Controls/MovementControl';
-import { EnergiesTable } from '../EnergiesTable/EnergiesTable';
 import { PowersTable } from '../PowersTable/PowersTable';
 import { MoveAllCheckbox } from '../MoveAllCheckbox/MoveAllCheckbox';
 
@@ -51,14 +50,6 @@ export function FoldingStage({
     <div className={styles['folding-stage']}>
       <div className={styles['params-panel']}>
         <PowersTable powers={settings.powers}/>
-        <EnergiesTable energies={energies}/>
-        { settings.isSplitted ?
-          <MoveAllCheckbox setMoveAll={setMoveAll} /> :
-          <></>
-        }
-      </div>
-
-      <div className={styles['stage']}>
         <div className={styles['controls-panel']}>
           <RotationControl
             particles={particles}
@@ -72,6 +63,7 @@ export function FoldingStage({
             kioapi={kioapi}
             stateRef={stateRef}
           />
+          <br></br>
           <MovementControl
             particles={particles}
             setParticles={setParticles}
@@ -86,7 +78,13 @@ export function FoldingStage({
             stateRef={stateRef}
           />
         </div>
+        { settings.isSplitted ?
+          <MoveAllCheckbox setMoveAll={setMoveAll} /> :
+          <></>
+        }
+      </div>
 
+      <div className={styles['stage']}>
         <Stage width={STAGE_WIDTH} height={STAGE_HEIGHT}>
           <Layer>
             <ParticlesChain

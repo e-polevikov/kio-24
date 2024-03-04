@@ -25,7 +25,8 @@ export function rotateParticles(
   let rotatedParticles = JSON.parse(JSON.stringify(particles));
   let IdsToRotate = [];
 
-  if (rotationDirection == ROTATION_DIRECTIONS[2].key ||
+  if (
+    rotationDirection == ROTATION_DIRECTIONS[1].key ||
     rotationDirection == ROTATION_DIRECTIONS[3].key
   ) {
     let upperBound = rotatedParticles.length;
@@ -64,8 +65,9 @@ export function rotateParticles(
 
     let alpha = ROTATION_ANGLE;
 
-    if (rotationDirection == ROTATION_DIRECTIONS[1].key ||
-      rotationDirection == ROTATION_DIRECTIONS[3].key
+    if (
+      rotationDirection == ROTATION_DIRECTIONS[1].key ||
+      rotationDirection == ROTATION_DIRECTIONS[2].key
     ) {
       alpha *= -1;
     }

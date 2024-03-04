@@ -1,7 +1,23 @@
-.transformations {
-  font-size: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+.transformation {
+  display: flex;
+  margin: 2px;
+  padding: 2px;
+  align-items: center;
+  margin-bottom: 4px;
 }
 
-.radio-btn {
-  margin-bottom: 6px;
+.transformation-title {
+  text-align: left;
+  font-size: 20px;
+  margin-left: 18px;
+  font-family: "Raleway", sans-serif;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  font-family: "Podkova", serif;
 }

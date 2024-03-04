@@ -1,19 +1,16 @@
 .geom-stage {
   display: flex;
+  background-color: white;
 }
 
 .panel {
-  border: solid black 2px;
   overflow: auto;
-  padding: 10px;
-  margin: 6px;
+  padding: 4px;
   width: 20%;
+  background-color: #F6F5F5;
 }
 
 .stage {
-  border: solid black 2px;
   overflow: auto;
   width: 80%;
-  margin: 6px;
-  margin-left: 12px;
 }

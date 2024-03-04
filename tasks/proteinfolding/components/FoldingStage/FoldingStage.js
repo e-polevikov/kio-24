@@ -49,8 +49,7 @@ export function FoldingStage({
   return (
     <div className={styles['folding-stage']}>
       <div className={styles['params-panel']}>
-        <PowersTable powers={settings.powers}/>
-        <div className={styles['controls-panel']}>
+        <div className={styles['controls-container']}>
           <RotationControl
             particles={particles}
             setParticles={setParticles}
@@ -77,11 +76,12 @@ export function FoldingStage({
             kioapi={kioapi}
             stateRef={stateRef}
           />
+          { settings.isSplitted ?
+            <MoveAllCheckbox setMoveAll={setMoveAll} /> :
+            <></>
+          }
         </div>
-        { settings.isSplitted ?
-          <MoveAllCheckbox setMoveAll={setMoveAll} /> :
-          <></>
-        }
+        <PowersTable powers={settings.powers}/>
       </div>
 
       <div className={styles['stage']}>

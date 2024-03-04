@@ -1,3 +1,4 @@
+export const STAGE_WIDTH = 1600;
 
 const LEVEL1_POINTS = [
   {x: 2, y: 1},
@@ -87,7 +88,7 @@ const LEVEL3_TREE = {
 export const LEVEL1_SETTINGS = {
   initialTree: LEVEL1_TREE,
   gridSize: {
-    width: 22,
+    width: 18,
     height: 8
   }
 };
@@ -95,7 +96,7 @@ export const LEVEL1_SETTINGS = {
 export const LEVEL2_SETTINGS = {
   initialTree: LEVEL2_TREE,
   gridSize: {
-    width: 30,
+    width: 24,
     height: 10
   }
 };
@@ -103,7 +104,7 @@ export const LEVEL2_SETTINGS = {
 export const LEVEL3_SETTINGS = {
   initialTree: LEVEL3_TREE,
   gridSize: {
-    width: 34,
+    width: 30,
     height: 12
   }
 };

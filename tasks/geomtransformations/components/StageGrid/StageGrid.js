@@ -5,7 +5,7 @@ function generateGridPoints(stageWidth, stageHeight, gridIndent) {
   let gridPoints = [];
   let pointId = 0;
 
-  for (let i = 1; i * gridIndent < stageWidth; i++) {
+  for (let i = 0; i * gridIndent <= stageWidth; i++) {
     let points = {
       id: pointId,
       x1: i * gridIndent, y1: 0,

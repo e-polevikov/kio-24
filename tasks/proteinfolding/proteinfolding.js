@@ -133,12 +133,10 @@ export class Proteinfolding {
   loadSolution = function (solution) {
     try {
       if (!solution) { return; }
-      let level = +this.settings.level;
+      let level = +this.settings.level || 0;
       let particles;
 
-      if (level === undefined) {
-        particles = getInitializedParticles(0);
-      } else if (particlesMatchLevel(solution.particles, level)) {
+      if (particlesMatchLevel(solution.particles, level)) {
         particles = solution.particles;
       } else {
         particles = getInitializedParticles(level);

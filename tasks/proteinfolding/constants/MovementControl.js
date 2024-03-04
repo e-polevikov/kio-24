@@ -1,8 +1,8 @@
 export const MOVEMENT_DIRECTIONS = [
-  { 'key': 0, 'arrow': '\u21E6' }, // left
-  { 'key': 1, 'arrow': '\u21E8' }, // right
-  { 'key': 2, 'arrow': '\u21E7' }, // up
-  { 'key': 3, 'arrow': '\u21E9' }  // down
+  { 'key': 0, imgTitle: 'arrow-left.svg' }, // left
+  { 'key': 1, imgTitle: 'arrow-right.svg' }, // right
+  { 'key': 2, imgTitle: 'arrow-up.svg' }, // up
+  { 'key': 3, imgTitle: 'arrow-down.svg' }  // down
 ];
 
 export const MOVE_DISTANCE = 3.0;

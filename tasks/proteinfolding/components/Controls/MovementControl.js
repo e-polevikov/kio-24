@@ -14,8 +14,6 @@ import {
 import { moveParticles } from '../../services/ParticlesMover';
 import { calculateTotalEnergy } from '../../services/EnergyCalculator';
 
-import styles from './Control.module.css';
-
 export function MovementControl({
   particles,
   setParticles,
@@ -31,6 +29,7 @@ export function MovementControl({
 }) {
   const [movementStarted, setMovementStarted] = useState(false);
   const [movementDirection, setMovementDirection] = useState(null);
+  const basePath = kioapi.basePath || ".";
 
   function handleParticlesMovement() {
     let movedParticles = moveParticles(
@@ -62,9 +61,15 @@ export function MovementControl({
   });
 
   const buttons = MOVEMENT_DIRECTIONS.map((direction) => (
-    <button
+    <img
       key={direction.key}
-      className={styles['button']}
+      src={`${basePath}/proteinfolding-resources/${direction.imgTitle}`}
+      style={{
+        all: "revert",
+        width: "20%",
+        border: movementStarted && direction.key === movementDirection ? "4px solid gray" : "4px solid white",
+        margin: "2px"
+      }}
       onMouseDown={() => {
         setMovementDirection(direction.key);
         setMovementStarted(true);
@@ -74,9 +79,7 @@ export function MovementControl({
         stateRef.current = { particles: particles };
         kioapi.submitResult({ energy: energies.current });
       }}
-    >
-      {direction.arrow}
-    </button>
+    />
   ));
 
   return (

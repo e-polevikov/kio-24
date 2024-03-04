@@ -16,7 +16,7 @@ export function figureImageReducer(figureImage, action) {
     points = figureImage.points;
 
     if (figureIsOutOfStageBoundaries(
-      points, 1.5 * STAGE_WIDTH, STAGE_HEIGHT
+      points, 1.0 * STAGE_WIDTH, STAGE_HEIGHT
     )) {
       return figureImage;
     }

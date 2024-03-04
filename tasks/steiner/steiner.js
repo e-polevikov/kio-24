@@ -10,7 +10,7 @@ import { LEVEL3_SETTINGS } from './constants/Levels';
 function getTree(level) {
   let settings;
 
-  if (level === 0) {
+  if (!level) { // undefined or 0
     settings = LEVEL1_SETTINGS;
   }
 
@@ -110,12 +110,16 @@ export class Steiner {
       title: "Сумма длин отрезков",
       ordering: "minimize",
       view: ""
+    }, {
+      name: "numPoints",
+      title: "Число точек",
+      ordering: "minimize",
+      view: ""
     }];
   };
 
   solution = function () {
     try {
-      console.log("solution()");
       return this.stateRef.current ?
         { tree: this.stateRef.current } :
         { tree: this.levelSettings.initialTree };
@@ -128,23 +132,14 @@ export class Steiner {
     try {
       if (!solution) { return; }
 
-      console.log("loadSolution()");
-      
-      let level = +this.settings.level;
+      let level = +this.settings.level || 0;
       let tree;
 
-      console.log(solution.tree);
-
-      if (level === undefined) {
-        tree = getTree(0);
-      } else if (treeMatchLevel(solution.tree, level)) {
+      if (treeMatchLevel(solution.tree, level)) {
         tree = solution.tree;
       } else {
         tree = getTree(level);
       }
-
-      console.log(level);
-      console.log(tree);
 
       this.levelSettings.initialTree = tree;
       this.updateRootAndRender();

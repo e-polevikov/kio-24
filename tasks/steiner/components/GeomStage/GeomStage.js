@@ -12,8 +12,9 @@ import { getTotalLength, connected } from '../../services/Segments';
 
 import styles from './GeomStage.module.css';
 
+import { STAGE_WIDTH } from '../../constants/Levels';
+
 export function GeomStage({ settings, stateRef, kioapi }) {
-  const STAGE_WIDTH = 1920;
   const GRID_INDENT = STAGE_WIDTH / settings.gridSize.width;
   const STAGE_HEIGHT = GRID_INDENT * settings.gridSize.height;
 
@@ -73,9 +74,10 @@ export function GeomStage({ settings, stateRef, kioapi }) {
 
     kioapi.submitResult({
       connected: connected(tree),
-      segmentsLength: getTotalLength(tree.segments)
+      segmentsLength: getTotalLength(tree.segments),
+      numPoints: tree.points.length
     });
-  }, [tree.segments.length]);
+  }, [tree.segments.length, tree.points.length]);
 
   return (
     <div>

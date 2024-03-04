@@ -6,9 +6,9 @@ export function FigureImage({ points }) {
     <>
       <Line
         points={points}
-        stroke={'blue'}
-        dash={[4, 2]}
-        strokeWidth={1}
+        stroke={'black'}
+        dash={[6, 3]}
+        strokeWidth={1.5}
         closed={true}
       />
     </>

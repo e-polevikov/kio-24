@@ -84,12 +84,12 @@ export class Geomtransformations {
   loadSolution = function (solution) {
     try {  
       if (!solution) { return; }
-      let level = +this.settings.level;
+      let level = +this.settings.level || 0;
       let figures;
 
       if (solution.figures.length === level + 2) {
         figures = solution.figures;
-      } else if (!level) { // undefined or 0th level
+      } else if (level === 0) {
         figures = JSON.parse(JSON.stringify(LEVEL1.figures));
       } else if (level === 1) {
         figures = JSON.parse(JSON.stringify(LEVEL2.figures));

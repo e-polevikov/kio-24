@@ -7,6 +7,95 @@ import { ACTIONS } from '../../constants/Actions';
 export function Transformations({
   transformation,
   setTransformation,
+  handleChange,
+  kioapi
+}) {
+  const basePath = kioapi.basePath || ".";
+
+  return (
+    <div className={styles['transformations']}>
+      <h2 className={styles['title']}>преобразования</h2>
+
+      <div
+        className={`${styles['transformation']}`}
+        onClick={() => {
+          setTransformation(TRANSFORMATIONS.REFLECT);
+          handleChange(
+            ACTIONS.SET_TRANSFORMATION,
+            {transformation: TRANSFORMATIONS.REFLECT}
+          );
+        }}
+      >
+        <img
+          style={{
+            border: transformation === TRANSFORMATIONS.REFLECT ?
+            "5px solid gray" : "5px solid white",
+            width: "70px",
+            height: "70px"
+          }}
+          src={`${basePath}/geomtransformations-resources/reflect.svg`}
+        />
+        <div className={styles['transformation-title']}>
+          симметрия относительно прямой DE
+        </div>
+      </div>
+
+      <div
+        className={styles['transformation']}
+        onClick={() => {
+          setTransformation(TRANSFORMATIONS.ROTATE_CLOCKWISE);
+          handleChange(
+            ACTIONS.SET_TRANSFORMATION,
+            {transformation: TRANSFORMATIONS.ROTATE_CLOCKWISE}
+          );
+        }}
+      >
+        <img
+          style={{
+            all: "revert",
+            border: transformation === TRANSFORMATIONS.ROTATE_CLOCKWISE ?
+            "5px solid gray" : "5px solid white",
+            width: "70px",
+            height: "70px"
+          }}
+          src={`${basePath}/geomtransformations-resources/rotate-clockwise.svg`}
+        />
+        <div className={styles['transformation-title']}>
+          поворот относительно точки B на угол ABC по часовой стрелке
+        </div>
+      </div>
+
+      <div
+        className={styles['transformation']}
+        onClick={() => {
+          setTransformation(TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE);
+          handleChange(
+            ACTIONS.SET_TRANSFORMATION,
+            {transformation: TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}
+          );
+        }}
+      >
+        <img
+          style={{
+            border: transformation === TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE ?
+            "5px solid gray" : "5px solid white",
+            width: "70px",
+            height: "70px"
+          }}
+          src={`${basePath}/geomtransformations-resources/rotate-counterclockwise.svg`}
+        />
+        <div className={styles['transformation-title']}>
+          поворот относительно точки B на угол ABC против часовой стрелки
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/*
+export function Transformations({
+  transformation,
+  setTransformation,
   handleChange
 }) {
   return (
@@ -71,3 +160,4 @@ export function Transformations({
     </div>
   );
 }
+*/

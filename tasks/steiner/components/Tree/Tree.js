@@ -39,8 +39,8 @@ export function Tree({ tree, treeDispath, setSegment, gridIndent }) {
             segment.x2 * gridIndent, segment.y2 * gridIndent
           ]}
           stroke={'black'}
-          strokeWidth={15.0}
-          opacity={0.5}
+          strokeWidth={8}
+          opacity={1}
           onDblClick={handleLineDblClick}
         />
       ))}
@@ -50,8 +50,38 @@ export function Tree({ tree, treeDispath, setSegment, gridIndent }) {
           key={String(pointId)}
           x={point.x * gridIndent}
           y={point.y * gridIndent}
-          radius={gridIndent / 4}
-          fill={point.predefined ? 'green' : 'black'}
+          radius={gridIndent / 3}
+          fill={point.predefined ? '#2FD9FF' : '#ADADAD'}
+          stroke={'black'}
+          strokeWidth={4}
+          onClick={handleCircleClick}
+          onDblClick={handleCircleDblClick}
+        />
+      ))}
+      {tree.points.map((point, pointId) => (
+        <Circle
+          id={String(pointId)}
+          key={String(pointId)}
+          x={point.x * gridIndent}
+          y={point.y * gridIndent}
+          radius={gridIndent / 5}
+          fill={point.predefined ? '#00A4C9' : '#6D6D6D'}
+          stroke={'black'}
+          strokeWidth={2}
+          onClick={handleCircleClick}
+          onDblClick={handleCircleDblClick}
+        />
+      ))}
+      {tree.points.map((point, pointId) => (
+        <Circle
+          id={String(pointId)}
+          key={String(pointId)}
+          x={point.x * gridIndent}
+          y={point.y * gridIndent}
+          radius={gridIndent / 10}
+          fill={point.predefined ? '#2FD9FF' : '#ADADAD'}
+          stroke={'black'}
+          strokeWidth={2}
           onClick={handleCircleClick}
           onDblClick={handleCircleDblClick}
         />

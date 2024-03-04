@@ -6,7 +6,7 @@ function generateGridPoints(stageWidth, stageHeight, gridIndent) {
   let gridPoints = [];
   let pointId = 0;
 
-  for (let i = 1; i * gridIndent < stageWidth; i++) {
+  for (let i = 0; i * gridIndent <= stageWidth; i++) {
     let points = {
       id: pointId,
       x1: i * gridIndent, y1: 0,
@@ -41,8 +41,8 @@ export function StageGrid({ stageWidth, stageHeight, gridIndent }) {
           id={String(points.id)}
           key={String(points.id)}
           points={[points.x1, points.y1, points.x2, points.y2]}
-          stroke={'grey'}
-          strokeWidth={0.75}
+          stroke={'#828282'}
+          strokeWidth={1.5}
         />
       ))}
     </>

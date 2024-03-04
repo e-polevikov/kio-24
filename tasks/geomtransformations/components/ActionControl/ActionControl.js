@@ -3,7 +3,9 @@ import styles from './ActionControl.module.css';
 
 import { ACTIONS } from '../../constants/Actions';
 
-export function ActionControl({ handleClick }) {
+export function ActionControl({ handleClick, kioapi }) {
+  const basePath = kioapi.basePath || ".";
+
   return (
     <div className={styles['action-control']}>
       <div className={styles['apply-btn-container']}>
@@ -11,22 +13,28 @@ export function ActionControl({ handleClick }) {
           className={styles['apply-btn']}
           onClick={() => handleClick(ACTIONS.APPLY, {})}
         >
-          Применить
+          применить
         </button>
       </div>
       <div className={styles['undo-redo-btn-container']}>
-        <button
-          className={styles['undo-redo-btn']}
+        <img
+          src={`${basePath}/geomtransformations-resources/undo-arrow-left.svg`}
+          style={{
+            all: "revert",
+            width: "45%",
+            margin: "6px"
+          }}
           onClick={() => handleClick(ACTIONS.UNDO, {})}
-        >
-          {'\u21B6'}
-        </button>
-        <button
-          className={styles['undo-redo-btn']}
+        />
+        <img
+          src={`${basePath}/geomtransformations-resources/redo-arrow-right.svg`}
+          style={{
+            all: "revert",
+            width: "45%",
+            margin: "6px"
+          }}
           onClick={() => handleClick(ACTIONS.REDO, {})}
-        >
-          {'\u21B7'}
-        </button>
+        />
       </div>
     </div>
   );

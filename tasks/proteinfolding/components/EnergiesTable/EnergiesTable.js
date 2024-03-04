@@ -5,7 +5,7 @@ export function EnergiesTable({ energies }) {
     border: "1px solid black",
     padding: "8px",
     margin: "2px",
-    width: "100%",
+    width: "90%",
     textAlign: "center",
     borderCollapse: "collapse"
   };

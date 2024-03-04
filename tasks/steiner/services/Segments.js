@@ -274,3 +274,28 @@ export function connected(tree) {
   
   return true;
 }
+
+export function numConjunctions(tree) {
+  let conjunctionPoints = new Set();
+
+  for (let i = 0; i < tree.segments.length; i++) {
+    let segment = tree.segments[i];
+    let point1 = String(segment.x1) + '-' + String(segment.y1);
+    let point2 = String(segment.x2) + '-' + String(segment.y2);
+    conjunctionPoints.add(point1);
+    conjunctionPoints.add(point2);
+  }
+
+  for (let i = 0; i < tree.points.length; i++) {
+    let point = tree.points[i];
+
+    if (!point.predefined) {
+      continue;
+    }
+
+    let pnt = String(point.x) + '-' + String(point.y);
+    conjunctionPoints.delete(pnt);
+  }
+
+  return conjunctionPoints.size;
+}

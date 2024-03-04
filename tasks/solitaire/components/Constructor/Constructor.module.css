@@ -1,6 +1,0 @@
-.constructor-class {
-  position: relative;
-  height: calc(var(--constructor-length) * var(--card-gap) + var(--card-height));
-  width: var(--card-width);
-  flex-shrink: 0;
-}

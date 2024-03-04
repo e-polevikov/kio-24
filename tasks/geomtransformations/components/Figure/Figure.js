@@ -24,8 +24,8 @@ export function Figure({
         points={points[points.length - 1]}
         stroke={'black'}
         fill={fillColor}
-        opacity={0.25}
-        strokeWidth={figureId === selectedFigureId ? 5.5 : 1.5}
+        opacity={0.5}
+        strokeWidth={figureId === selectedFigureId ? 5.0 : 2.5}
         closed={true}
         onClick={() => {
           setSelectedFigureId(figureId);
@@ -35,20 +35,22 @@ export function Figure({
       <Line
         points={centroids}
         stroke={fillColor}
-        dash={[4, 2]}
-        strokeWidth={0.5}
+        dash={[6, 3]}
+        strokeWidth={1.0}
       />
       <Circle
         x={centroids[0]}
         y={centroids[1]}
-        radius={gridIndent / 12}
-        fill={'black'}
+        radius={gridIndent / 10}
+        fill={'white'}
+        stroke={'black'}
       />
       <Circle
         x={centroids[centroids.length - 2]}
         y={centroids[centroids.length - 1]}
-        radius={gridIndent / 12}
-        fill={'black'}
+        radius={gridIndent / 10}
+        fill={'white'}
+        stroke={'black'}
       />
     </>
   );

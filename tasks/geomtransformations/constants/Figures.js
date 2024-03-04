@@ -3,7 +3,7 @@ import { GRID_INDENT, STAGE_WIDTH } from "./GeomStage";
 export const FIGURE_AREA = 4;
 
 export const FIGURE1 = {
-  COLOR: 'blue',
+  COLOR: '#83E8FF',
   POINTS: [
     1 * GRID_INDENT, 11 * GRID_INDENT,
     1 * GRID_INDENT, 13 * GRID_INDENT,
@@ -15,7 +15,7 @@ export const FIGURE1 = {
 };
 
 export const FIGURE2 = {
-  COLOR: 'red',
+  COLOR: '#FFA9E7',
   POINTS: [
     STAGE_WIDTH - 4 * GRID_INDENT, 1 * GRID_INDENT,
     STAGE_WIDTH - 4 * GRID_INDENT, 2 * GRID_INDENT,
@@ -27,7 +27,7 @@ export const FIGURE2 = {
 };
 
 export const FIGURE3 = {
-  COLOR: 'green',
+  COLOR: '#CCED00',
   POINTS: [
     STAGE_WIDTH - 4 * GRID_INDENT, 12 * GRID_INDENT,
     STAGE_WIDTH - 4 * GRID_INDENT, 13 * GRID_INDENT,
@@ -39,7 +39,7 @@ export const FIGURE3 = {
 };
 
 export const FIGURE4 = {
-  COLOR: 'yellow',
+  COLOR: '#FFEF5B',
   POINTS: [
     1 * GRID_INDENT, 1 * GRID_INDENT,
     1 * GRID_INDENT, 3 * GRID_INDENT,
@@ -51,7 +51,7 @@ export const FIGURE4 = {
 };
 
 export const FIGURE5 = {
-  COLOR: 'green',
+  COLOR: '#CCED00',
   POINTS: [
     STAGE_WIDTH - 5 * GRID_INDENT, 11 * GRID_INDENT,
     STAGE_WIDTH - 5 * GRID_INDENT, 13 * GRID_INDENT,

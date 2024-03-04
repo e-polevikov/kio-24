@@ -4,7 +4,7 @@ function intersects(particle1, particle2, particleRadius) {
   let xDistance = Math.pow((particle1.x - particle2.x), 2);
   let yDistance = Math.pow((particle1.y - particle2.y), 2);
 
-  return xDistance + yDistance < 4.0 * Math.pow(particleRadius, 2);
+  return xDistance + yDistance <= 4.0 * Math.pow(particleRadius, 2);
 }
 
 export function haveIntersections(particles, particleRadius, isSplitted) {

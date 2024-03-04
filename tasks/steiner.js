@@ -60,6 +60,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks_TreeReducer__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ../../hooks/TreeReducer */ "./tasks/steiner/hooks/TreeReducer.js");
 /* harmony import */ var _services_Segments__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ../../services/Segments */ "./tasks/steiner/services/Segments.js");
 /* harmony import */ var _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./GeomStage.module.css */ "./tasks/steiner/components/GeomStage/GeomStage.module.css");
+/* harmony import */ var _constants_Levels__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../../constants/Levels */ "./tasks/steiner/constants/Levels.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 
@@ -100,12 +101,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function GeomStage(_ref) {
   var settings = _ref.settings,
     stateRef = _ref.stateRef,
     kioapi = _ref.kioapi;
-  var STAGE_WIDTH = 1920;
-  var GRID_INDENT = STAGE_WIDTH / settings.gridSize.width;
+  var GRID_INDENT = _constants_Levels__WEBPACK_IMPORTED_MODULE_27__.STAGE_WIDTH / settings.gridSize.width;
   var STAGE_HEIGHT = GRID_INDENT * settings.gridSize.height;
   var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_19__.useReducer)(_hooks_TreeReducer__WEBPACK_IMPORTED_MODULE_24__.treeReducer, settings.initialTree),
     _useReducer2 = _slicedToArray(_useReducer, 2),
@@ -169,20 +170,21 @@ function GeomStage(_ref) {
     stateRef.current = tree;
     kioapi.submitResult({
       connected: (0,_services_Segments__WEBPACK_IMPORTED_MODULE_25__.connected)(tree),
-      segmentsLength: (0,_services_Segments__WEBPACK_IMPORTED_MODULE_25__.getTotalLength)(tree.segments)
+      segmentsLength: (0,_services_Segments__WEBPACK_IMPORTED_MODULE_25__.getTotalLength)(tree.segments),
+      numPoints: tree.points.length
     });
-  }, [tree.segments.length]);
+  }, [tree.segments.length, tree.points.length]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement("div", {
     className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_26__["default"]["geom-stage"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement("div", {
     className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_26__["default"].stage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_20__.Stage, {
-    width: STAGE_WIDTH,
+    width: _constants_Levels__WEBPACK_IMPORTED_MODULE_27__.STAGE_WIDTH,
     height: STAGE_HEIGHT,
     onMouseMove: handleMouseMove,
     onClick: handleClick
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_20__.Layer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement(_StageGrid_StageGrid__WEBPACK_IMPORTED_MODULE_21__.StageGrid, {
-    stageWidth: STAGE_WIDTH,
+    stageWidth: _constants_Levels__WEBPACK_IMPORTED_MODULE_27__.STAGE_WIDTH,
     stageHeight: STAGE_HEIGHT,
     gridIndent: GRID_INDENT
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_19___default().createElement(_Segment_Segment__WEBPACK_IMPORTED_MODULE_23__.Segment, {
@@ -220,20 +222,39 @@ function Segment(_ref) {
   if (!segment.visible) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null);
   }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Circle, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Line, {
+    points: [segment.x1, segment.y1, segment.x2, segment.y2],
+    dash: [12, 2],
+    stroke: 'black',
+    strokeWidth: 3
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Circle, {
     x: segment.x1,
     y: segment.y1,
-    radius: gridIndent / 6,
-    fill: 'black'
+    radius: gridIndent / 5,
+    fill: '#6D6D6D',
+    stroke: 'black',
+    strokeWidth: 4
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Circle, {
     x: segment.x2,
     y: segment.y2,
-    radius: gridIndent / 6,
-    fill: 'black'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Line, {
-    points: [segment.x1, segment.y1, segment.x2, segment.y2],
+    radius: gridIndent / 5,
+    fill: '#6D6D6D',
     stroke: 'black',
-    strokeWidth: 0.75
+    strokeWidth: 4
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Circle, {
+    x: segment.x1,
+    y: segment.y1,
+    radius: gridIndent / 10,
+    fill: '#ADADAD',
+    stroke: 'black',
+    strokeWidth: 2
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Circle, {
+    x: segment.x2,
+    y: segment.y2,
+    radius: gridIndent / 10,
+    fill: '#ADADAD',
+    stroke: 'black',
+    strokeWidth: 2
   }));
 }
 
@@ -261,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
 function generateGridPoints(stageWidth, stageHeight, gridIndent) {
   var gridPoints = [];
   var pointId = 0;
-  for (var i = 1; i * gridIndent < stageWidth; i++) {
+  for (var i = 0; i * gridIndent <= stageWidth; i++) {
     var points = {
       id: pointId,
       x1: i * gridIndent,
@@ -295,8 +316,8 @@ function StageGrid(_ref) {
       id: String(points.id),
       key: String(points.id),
       points: [points.x1, points.y1, points.x2, points.y2],
-      stroke: 'grey',
-      strokeWidth: 0.75
+      stroke: '#828282',
+      strokeWidth: 1.5
     });
   }));
 }
@@ -359,8 +380,8 @@ function Tree(_ref) {
       key: String(segmentId),
       points: [segment.x1 * gridIndent, segment.y1 * gridIndent, segment.x2 * gridIndent, segment.y2 * gridIndent],
       stroke: 'black',
-      strokeWidth: 15.0,
-      opacity: 0.5,
+      strokeWidth: 8,
+      opacity: 1,
       onDblClick: handleLineDblClick
     });
   }), tree.points.map(function (point, pointId) {
@@ -369,8 +390,36 @@ function Tree(_ref) {
       key: String(pointId),
       x: point.x * gridIndent,
       y: point.y * gridIndent,
-      radius: gridIndent / 4,
-      fill: point.predefined ? 'green' : 'black',
+      radius: gridIndent / 3,
+      fill: point.predefined ? '#2FD9FF' : '#ADADAD',
+      stroke: 'black',
+      strokeWidth: 4,
+      onClick: handleCircleClick,
+      onDblClick: handleCircleDblClick
+    });
+  }), tree.points.map(function (point, pointId) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_3__.Circle, {
+      id: String(pointId),
+      key: String(pointId),
+      x: point.x * gridIndent,
+      y: point.y * gridIndent,
+      radius: gridIndent / 5,
+      fill: point.predefined ? '#00A4C9' : '#6D6D6D',
+      stroke: 'black',
+      strokeWidth: 2,
+      onClick: handleCircleClick,
+      onDblClick: handleCircleDblClick
+    });
+  }), tree.points.map(function (point, pointId) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_3__.Circle, {
+      id: String(pointId),
+      key: String(pointId),
+      x: point.x * gridIndent,
+      y: point.y * gridIndent,
+      radius: gridIndent / 10,
+      fill: point.predefined ? '#2FD9FF' : '#ADADAD',
+      stroke: 'black',
+      strokeWidth: 2,
       onClick: handleCircleClick,
       onDblClick: handleCircleDblClick
     });
@@ -390,7 +439,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LEVEL1_SETTINGS": () => (/* binding */ LEVEL1_SETTINGS),
 /* harmony export */   "LEVEL2_SETTINGS": () => (/* binding */ LEVEL2_SETTINGS),
-/* harmony export */   "LEVEL3_SETTINGS": () => (/* binding */ LEVEL3_SETTINGS)
+/* harmony export */   "LEVEL3_SETTINGS": () => (/* binding */ LEVEL3_SETTINGS),
+/* harmony export */   "STAGE_WIDTH": () => (/* binding */ STAGE_WIDTH)
 /* harmony export */ });
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
 /* harmony import */ var core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_map_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -446,6 +496,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 
 
+var STAGE_WIDTH = 1600;
 var LEVEL1_POINTS = [{
   x: 2,
   y: 1
@@ -641,21 +692,21 @@ var LEVEL3_TREE = {
 var LEVEL1_SETTINGS = {
   initialTree: LEVEL1_TREE,
   gridSize: {
-    width: 22,
+    width: 18,
     height: 8
   }
 };
 var LEVEL2_SETTINGS = {
   initialTree: LEVEL2_TREE,
   gridSize: {
-    width: 30,
+    width: 24,
     height: 10
   }
 };
 var LEVEL3_SETTINGS = {
   initialTree: LEVEL3_TREE,
   gridSize: {
-    width: 34,
+    width: 30,
     height: 12
   }
 };
@@ -871,6 +922,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "intersectHorizontally": () => (/* binding */ intersectHorizontally),
 /* harmony export */   "intersectPerpendicularly": () => (/* binding */ intersectPerpendicularly),
 /* harmony export */   "intersectVertically": () => (/* binding */ intersectVertically),
+/* harmony export */   "numConjunctions": () => (/* binding */ numConjunctions),
 /* harmony export */   "overlapHorizontally": () => (/* binding */ overlapHorizontally),
 /* harmony export */   "overlapVertically": () => (/* binding */ overlapVertically),
 /* harmony export */   "vertical": () => (/* binding */ vertical)
@@ -887,8 +939,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
 /* harmony import */ var core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_find_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var disjoint_set__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! disjoint-set */ "./node_modules/disjoint-set/src/DisjointSet.js");
-/* harmony import */ var disjoint_set__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(disjoint_set__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es.set.js */ "./node_modules/core-js/modules/es.set.js");
+/* harmony import */ var core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_set_js__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var disjoint_set__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! disjoint-set */ "./node_modules/disjoint-set/src/DisjointSet.js");
+/* harmony import */ var disjoint_set__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(disjoint_set__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -1009,7 +1064,7 @@ function getTotalLength(segments) {
 }
 function connected(tree) {
   var pointToId = new Map();
-  var pointsSet = disjoint_set__WEBPACK_IMPORTED_MODULE_6__();
+  var pointsSet = disjoint_set__WEBPACK_IMPORTED_MODULE_7__();
   for (var i = 0; i < tree.points.length; i++) {
     var x = tree.points[i].x;
     var y = tree.points[i].y;
@@ -1083,6 +1138,25 @@ function connected(tree) {
     }
   }
   return true;
+}
+function numConjunctions(tree) {
+  var conjunctionPoints = new Set();
+  for (var i = 0; i < tree.segments.length; i++) {
+    var segment = tree.segments[i];
+    var point1 = String(segment.x1) + '-' + String(segment.y1);
+    var point2 = String(segment.x2) + '-' + String(segment.y2);
+    conjunctionPoints.add(point1);
+    conjunctionPoints.add(point2);
+  }
+  for (var _i5 = 0; _i5 < tree.points.length; _i5++) {
+    var point = tree.points[_i5];
+    if (!point.predefined) {
+      continue;
+    }
+    var pnt = String(point.x) + '-' + String(point.y);
+    conjunctionPoints.delete(pnt);
+  }
+  return conjunctionPoints.size;
 }
 
 /***/ }),
@@ -6063,6 +6137,38 @@ var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/c
 $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
   exec: exec
 });
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.set.constructor.js":
+/*!************************************************************!*\
+  !*** ./node_modules/core-js/modules/es.set.constructor.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+var collection = __webpack_require__(/*! ../internals/collection */ "./node_modules/core-js/internals/collection.js");
+var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "./node_modules/core-js/internals/collection-strong.js");
+
+// `Set` constructor
+// https://tc39.es/ecma262/#sec-set-objects
+collection('Set', function (init) {
+  return function Set() { return init(this, arguments.length ? arguments[0] : undefined); };
+}, collectionStrong);
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js/modules/es.set.js":
+/*!************************************************!*\
+  !*** ./node_modules/core-js/modules/es.set.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+// TODO: Remove this module from `core-js@4` since it's replaced to module below
+__webpack_require__(/*! ../modules/es.set.constructor */ "./node_modules/core-js/modules/es.set.constructor.js");
 
 
 /***/ }),
@@ -74561,7 +74667,8 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 function getTree(level) {
   var settings;
-  if (level === 0) {
+  if (!level) {
+    // undefined or 0
     settings = _constants_Levels__WEBPACK_IMPORTED_MODULE_14__.LEVEL1_SETTINGS;
   }
   if (level === 1) {
@@ -74618,11 +74725,15 @@ var Steiner = /*#__PURE__*/_createClass(function Steiner(settings) {
       title: "Сумма длин отрезков",
       ordering: "minimize",
       view: ""
+    }, {
+      name: "numPoints",
+      title: "Число точек",
+      ordering: "minimize",
+      view: ""
     }];
   });
   _defineProperty(this, "solution", function () {
     try {
-      console.log("solution()");
       return this.stateRef.current ? {
         tree: this.stateRef.current
       } : {
@@ -74637,19 +74748,13 @@ var Steiner = /*#__PURE__*/_createClass(function Steiner(settings) {
       if (!solution) {
         return;
       }
-      console.log("loadSolution()");
-      var level = +this.settings.level;
+      var level = +this.settings.level || 0;
       var tree;
-      console.log(solution.tree);
-      if (level === undefined) {
-        tree = getTree(0);
-      } else if (treeMatchLevel(solution.tree, level)) {
+      if (treeMatchLevel(solution.tree, level)) {
         tree = solution.tree;
       } else {
         tree = getTree(level);
       }
-      console.log(level);
-      console.log(tree);
       this.levelSettings.initialTree = tree;
       this.updateRootAndRender();
     } catch (e) {

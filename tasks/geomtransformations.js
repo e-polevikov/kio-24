@@ -21,7 +21,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ActionControl(_ref) {
-  var handleClick = _ref.handleClick;
+  var handleClick = _ref.handleClick,
+    kioapi = _ref.kioapi;
+  var basePath = kioapi.basePath || ".";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _ActionControl_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["action-control"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -31,19 +33,29 @@ function ActionControl(_ref) {
     onClick: function onClick() {
       return handleClick(_constants_Actions__WEBPACK_IMPORTED_MODULE_2__.ACTIONS.APPLY, {});
     }
-  }, "\u041F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, "\u043F\u0440\u0438\u043C\u0435\u043D\u0438\u0442\u044C")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _ActionControl_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["undo-redo-btn-container"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: _ActionControl_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["undo-redo-btn"],
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "".concat(basePath, "/geomtransformations-resources/undo-arrow-left.svg"),
+    style: {
+      all: "revert",
+      width: "45%",
+      margin: "6px"
+    },
     onClick: function onClick() {
       return handleClick(_constants_Actions__WEBPACK_IMPORTED_MODULE_2__.ACTIONS.UNDO, {});
     }
-  }, "\u21B6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: _ActionControl_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["undo-redo-btn"],
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: "".concat(basePath, "/geomtransformations-resources/redo-arrow-right.svg"),
+    style: {
+      all: "revert",
+      width: "45%",
+      margin: "6px"
+    },
     onClick: function onClick() {
       return handleClick(_constants_Actions__WEBPACK_IMPORTED_MODULE_2__.ACTIONS.REDO, {});
     }
-  }, "\u21B7")));
+  })));
 }
 
 /***/ }),
@@ -266,14 +278,14 @@ function Angle(_ref) {
     key: "0",
     points: konvaLinePoints,
     stroke: 'black',
-    strokeWidth: isSelected ? 2.0 : 1.0
+    strokeWidth: isSelected ? 4.0 : 2.0
   }), anglePoints.map(function (point) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_21___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_22__.Circle, {
       id: point.id,
       key: point.id,
       x: point.x,
       y: point.y,
-      radius: gridIndent / 6,
+      radius: gridIndent / 5,
       fill: 'black',
       stroke: point.isDragging ? 'blue' : null,
       strokeWidth: 3,
@@ -331,8 +343,8 @@ function Figure(_ref) {
     points: points[points.length - 1],
     stroke: 'black',
     fill: fillColor,
-    opacity: 0.25,
-    strokeWidth: figureId === selectedFigureId ? 5.5 : 1.5,
+    opacity: 0.5,
+    strokeWidth: figureId === selectedFigureId ? 5.0 : 2.5,
     closed: true,
     onClick: function onClick() {
       setSelectedFigureId(figureId);
@@ -343,18 +355,20 @@ function Figure(_ref) {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_4__.Line, {
     points: centroids,
     stroke: fillColor,
-    dash: [4, 2],
-    strokeWidth: 0.5
+    dash: [6, 3],
+    strokeWidth: 1.0
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_4__.Circle, {
     x: centroids[0],
     y: centroids[1],
-    radius: gridIndent / 12,
-    fill: 'black'
+    radius: gridIndent / 10,
+    fill: 'white',
+    stroke: 'black'
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_4__.Circle, {
     x: centroids[centroids.length - 2],
     y: centroids[centroids.length - 1],
-    radius: gridIndent / 12,
-    fill: 'black'
+    radius: gridIndent / 10,
+    fill: 'white',
+    stroke: 'black'
   }));
 }
 
@@ -380,9 +394,9 @@ function FigureImage(_ref) {
   var points = _ref.points;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_1__.Line, {
     points: points,
-    stroke: 'blue',
-    dash: [4, 2],
-    strokeWidth: 1,
+    stroke: 'black',
+    dash: [6, 3],
+    strokeWidth: 1.5,
     closed: true
   }));
 }
@@ -549,16 +563,18 @@ function GeomStage(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Transformations_Transformations__WEBPACK_IMPORTED_MODULE_20__.Transformations, {
     transformation: transformation,
     setTransformation: setTransformation,
-    handleChange: handleAction
+    handleChange: handleAction,
+    kioapi: kioapi
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_ActionControl_ActionControl__WEBPACK_IMPORTED_MODULE_19__.ActionControl, {
-    handleClick: handleAction
+    handleClick: handleAction,
+    kioapi: kioapi
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement("div", {
     className: _GeomStage_module_css__WEBPACK_IMPORTED_MODULE_27__["default"].stage
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_13__.Stage, {
-    width: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    width: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     height: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_13__.Layer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_StageGrid_StageGrid__WEBPACK_IMPORTED_MODULE_16__.StageGrid, {
-    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Figure_FigureImage__WEBPACK_IMPORTED_MODULE_22__.FigureImage, {
@@ -580,7 +596,7 @@ function GeomStage(_ref) {
     setAnglePoints: setAnglePoints,
     isSelected: transformation !== _constants_Transformations__WEBPACK_IMPORTED_MODULE_15__.TRANSFORMATIONS.REFLECT,
     handlePointMove: handleAction,
-    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_12___default().createElement(_Line_Line__WEBPACK_IMPORTED_MODULE_17__.Line, {
@@ -588,7 +604,7 @@ function GeomStage(_ref) {
     setLinePoints: setLinePoints,
     isSelected: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_15__.TRANSFORMATIONS.REFLECT,
     handlePointMove: handleAction,
-    stageWidth: 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
+    stageWidth: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_WIDTH,
     stageHeight: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.STAGE_HEIGHT,
     gridIndent: _constants_GeomStage__WEBPACK_IMPORTED_MODULE_14__.GRID_INDENT
   })))));
@@ -803,14 +819,14 @@ function Line(_ref) {
     key: "0",
     points: konvaLinePoints,
     stroke: 'black',
-    strokeWidth: isSelected ? 2.0 : 1.0
+    strokeWidth: isSelected ? 4.0 : 2.0
   }), linePoints.map(function (point) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_20___default().createElement(react_konva__WEBPACK_IMPORTED_MODULE_21__.Circle, {
       id: point.id,
       key: point.id,
       x: point.x,
       y: point.y,
-      radius: gridIndent / 6,
+      radius: gridIndent / 5,
       fill: 'black',
       stroke: point.isDragging ? 'blue' : null,
       strokeWidth: 3,
@@ -846,7 +862,7 @@ __webpack_require__.r(__webpack_exports__);
 function generateGridPoints(stageWidth, stageHeight, gridIndent) {
   var gridPoints = [];
   var pointId = 0;
-  for (var i = 1; i * gridIndent < stageWidth; i++) {
+  for (var i = 0; i * gridIndent <= stageWidth; i++) {
     var points = {
       id: pointId,
       x1: i * gridIndent,
@@ -911,60 +927,137 @@ __webpack_require__.r(__webpack_exports__);
 function Transformations(_ref) {
   var transformation = _ref.transformation,
     setTransformation = _ref.setTransformation,
-    handleChange = _ref.handleChange;
+    handleChange = _ref.handleChange,
+    kioapi = _ref.kioapi;
+  var basePath = kioapi.basePath || ".";
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].transformations
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-    style: {
-      textAlign: "center"
-    }
-  }, "\u041F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["radio-btn"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "radio",
-    id: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT,
-    value: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT,
-    checked: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT,
-    onChange: function onChange() {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].title
+  }, "\u043F\u0440\u0435\u043E\u0431\u0440\u0430\u0437\u043E\u0432\u0430\u043D\u0438\u044F"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "".concat(_Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].transformation),
+    onClick: function onClick() {
       setTransformation(_constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT);
       handleChange(_constants_Actions__WEBPACK_IMPORTED_MODULE_3__.ACTIONS.SET_TRANSFORMATION, {
         transformation: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT
       });
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT
-  }, "\u0421\u0438\u043C\u043C\u0435\u0442\u0440\u0438\u044F \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043F\u0440\u044F\u043C\u043E\u0439 DE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["radio-btn"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "radio",
-    id: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE,
-    value: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE,
-    checked: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE,
-    onChange: function onChange() {
-      setTransformation(_constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE);
-      handleChange(_constants_Actions__WEBPACK_IMPORTED_MODULE_3__.ACTIONS.SET_TRANSFORMATION, {
-        transformation: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE
-      });
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE
-  }, "\u041F\u043E\u0432\u043E\u0440\u043E\u0442 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0442\u043E\u0447\u043A\u0438 B \u043D\u0430 \u0443\u0433\u043E\u043B ABC \u043F\u0440\u043E\u0442\u0438\u0432 \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0438")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["radio-btn"]
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "radio",
-    id: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE,
-    value: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE,
-    checked: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE,
-    onChange: function onChange() {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    style: {
+      border: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.REFLECT ? "5px solid gray" : "5px solid white",
+      width: "70px",
+      height: "70px"
+    },
+    src: "".concat(basePath, "/geomtransformations-resources/reflect.svg")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["transformation-title"]
+  }, "\u0441\u0438\u043C\u043C\u0435\u0442\u0440\u0438\u044F \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u043F\u0440\u044F\u043C\u043E\u0439 DE")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].transformation,
+    onClick: function onClick() {
       setTransformation(_constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE);
       handleChange(_constants_Actions__WEBPACK_IMPORTED_MODULE_3__.ACTIONS.SET_TRANSFORMATION, {
         transformation: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE
       });
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE
-  }, "\u041F\u043E\u0432\u043E\u0440\u043E\u0442 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0442\u043E\u0447\u043A\u0438 B \u043D\u0430 \u0443\u0433\u043E\u043B ABC \u043F\u043E \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0435")));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    style: {
+      all: "revert",
+      border: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_CLOCKWISE ? "5px solid gray" : "5px solid white",
+      width: "70px",
+      height: "70px"
+    },
+    src: "".concat(basePath, "/geomtransformations-resources/rotate-clockwise.svg")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["transformation-title"]
+  }, "\u043F\u043E\u0432\u043E\u0440\u043E\u0442 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0442\u043E\u0447\u043A\u0438 B \u043D\u0430 \u0443\u0433\u043E\u043B ABC \u043F\u043E \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0435")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"].transformation,
+    onClick: function onClick() {
+      setTransformation(_constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE);
+      handleChange(_constants_Actions__WEBPACK_IMPORTED_MODULE_3__.ACTIONS.SET_TRANSFORMATION, {
+        transformation: _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE
+      });
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    style: {
+      border: transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_2__.TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE ? "5px solid gray" : "5px solid white",
+      width: "70px",
+      height: "70px"
+    },
+    src: "".concat(basePath, "/geomtransformations-resources/rotate-counterclockwise.svg")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: _Transformations_module_css__WEBPACK_IMPORTED_MODULE_1__["default"]["transformation-title"]
+  }, "\u043F\u043E\u0432\u043E\u0440\u043E\u0442 \u043E\u0442\u043D\u043E\u0441\u0438\u0442\u0435\u043B\u044C\u043D\u043E \u0442\u043E\u0447\u043A\u0438 B \u043D\u0430 \u0443\u0433\u043E\u043B ABC \u043F\u0440\u043E\u0442\u0438\u0432 \u0447\u0430\u0441\u043E\u0432\u043E\u0439 \u0441\u0442\u0440\u0435\u043B\u043A\u0438")));
 }
+
+/*
+export function Transformations({
+  transformation,
+  setTransformation,
+  handleChange
+}) {
+  return (
+    <div className={styles['transformations']}>
+      <h2 style={{textAlign: "center"}}>Преобразования</h2>
+      <div className={styles['radio-btn']}>
+        <input
+          type={"radio"}
+          id={TRANSFORMATIONS.REFLECT}
+          value={TRANSFORMATIONS.REFLECT}
+          checked={transformation === TRANSFORMATIONS.REFLECT}
+          onChange={() => {
+            setTransformation(TRANSFORMATIONS.REFLECT);
+            handleChange(
+              ACTIONS.SET_TRANSFORMATION,
+              {transformation: TRANSFORMATIONS.REFLECT}
+            );
+          }}
+        />
+        <label htmlFor={TRANSFORMATIONS.REFLECT}>
+          Симметрия относительно прямой DE
+        </label>
+      </div>
+
+      <div className={styles['radio-btn']}>
+        <input
+          type={"radio"}
+          id={TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}
+          value={TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}
+          checked={transformation === TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}
+          onChange={() => {
+            setTransformation(TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE);
+            handleChange(
+              ACTIONS.SET_TRANSFORMATION,
+              {transformation: TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}
+            );
+          }}
+        />
+        <label htmlFor={TRANSFORMATIONS.ROTATE_COUNTER_CLOCKWISE}>
+          Поворот относительно точки B на угол ABC против часовой стрелки
+        </label>
+      </div>
+
+      <div className={styles['radio-btn']}>
+        <input
+          type={"radio"}
+          id={TRANSFORMATIONS.ROTATE_CLOCKWISE}
+          value={TRANSFORMATIONS.ROTATE_CLOCKWISE}
+          checked={transformation === TRANSFORMATIONS.ROTATE_CLOCKWISE}
+          onChange={() => {
+            setTransformation(TRANSFORMATIONS.ROTATE_CLOCKWISE);
+            handleChange(
+              ACTIONS.SET_TRANSFORMATION,
+              {transformation: TRANSFORMATIONS.ROTATE_CLOCKWISE}
+            );
+          }}
+        />
+        <label htmlFor={TRANSFORMATIONS.ROTATE_CLOCKWISE}>
+          Поворот относительно точки B на угол ABC по часовой стрелке
+        </label>
+      </div>
+    </div>
+  );
+}
+*/
 
 /***/ }),
 
@@ -1011,23 +1104,23 @@ __webpack_require__.r(__webpack_exports__);
 
 var FIGURE_AREA = 4;
 var FIGURE1 = {
-  COLOR: 'blue',
+  COLOR: '#83E8FF',
   POINTS: [1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 12 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 12 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT]
 };
 var FIGURE2 = {
-  COLOR: 'red',
+  COLOR: '#FFA9E7',
   POINTS: [_GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 3 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 3 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT]
 };
 var FIGURE3 = {
-  COLOR: 'green',
+  COLOR: '#CCED00',
   POINTS: [_GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 12 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 12 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT]
 };
 var FIGURE4 = {
-  COLOR: 'yellow',
+  COLOR: '#FFEF5B',
   POINTS: [1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 3 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 3 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 2 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 4 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT]
 };
 var FIGURE5 = {
-  COLOR: 'green',
+  COLOR: '#CCED00',
   POINTS: [_GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 5 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 5 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 13 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, _GeomStage__WEBPACK_IMPORTED_MODULE_0__.STAGE_WIDTH - 1 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT, 11 * _GeomStage__WEBPACK_IMPORTED_MODULE_0__.GRID_INDENT]
 };
 
@@ -1053,7 +1146,7 @@ var GRID_SIZE = {
   WIDTH: 20,
   HEIGHT: 14
 };
-var STAGE_WIDTH = 1024;
+var STAGE_WIDTH = 1150;
 var GRID_INDENT = STAGE_WIDTH / GRID_SIZE.WIDTH;
 var STAGE_HEIGHT = GRID_INDENT * GRID_SIZE.HEIGHT;
 var ANGLE_POINTS = [{
@@ -1261,7 +1354,7 @@ function figureImageReducer(figureImage, action) {
   var points = figure.points[figure.stateIdx];
   if (action.type === _constants_Actions__WEBPACK_IMPORTED_MODULE_0__.ACTIONS.APPLY) {
     points = figureImage.points;
-    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_3__.figureIsOutOfStageBoundaries)(points, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_HEIGHT)) {
+    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_3__.figureIsOutOfStageBoundaries)(points, 1.0 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_2__.STAGE_HEIGHT)) {
       return figureImage;
     }
   }
@@ -1343,7 +1436,7 @@ function figuresReducer(figures, action) {
   }
   if (action.states.transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_3__.TRANSFORMATIONS.REFLECT) {
     var reflectedPoints = (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.reflectPoints)(updatedFigure.points[updatedFigure.stateIdx], action.states.linePoints);
-    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(reflectedPoints, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
+    if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(reflectedPoints, 1.0 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
       return figures;
     }
     updatedFigure.points = updatedFigure.points.slice(0, updatedFigure.stateIdx + 1);
@@ -1355,7 +1448,7 @@ function figuresReducer(figures, action) {
   }
   var clockwise = action.states.transformation === _constants_Transformations__WEBPACK_IMPORTED_MODULE_3__.TRANSFORMATIONS.ROTATE_CLOCKWISE;
   var rotatedPoints = (0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.rotatePoints)(updatedFigure.points[updatedFigure.stateIdx], action.states.anglePoints, clockwise);
-  if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(rotatedPoints, 1.5 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
+  if ((0,_services_GeomTransformations__WEBPACK_IMPORTED_MODULE_5__.figureIsOutOfStageBoundaries)(rotatedPoints, 1.0 * _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_WIDTH, _constants_GeomStage__WEBPACK_IMPORTED_MODULE_4__.STAGE_HEIGHT)) {
     return figures;
   }
   updatedFigure.points = updatedFigure.points.slice(0, updatedFigure.stateIdx + 1);
@@ -20224,7 +20317,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"action-control":"rdGJK_6TMrl0Mp_wCmGu","apply-btn-container":"uawre1T4zn89OWhy7xYa","apply-btn":"vm6tVHvqAm__wjG1ylls","undo-redo-btn-container":"C0zOrYxNCtvlZwxB7RWK","undo-redo-btn":"d3L0sqNO1jNVygJ9J4oa"});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"action-control":"rdGJK_6TMrl0Mp_wCmGu","apply-btn-container":"uawre1T4zn89OWhy7xYa","apply-btn":"vm6tVHvqAm__wjG1ylls","undo-redo-btn-container":"C0zOrYxNCtvlZwxB7RWK"});
 
 /***/ }),
 
@@ -20256,7 +20349,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"transformations":"kua2aIuO_S6AgozdWn_e","radio-btn":"L9ivKzwuf53kpN_z6rd_"});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"transformation":"CnHekT7WKQ3kfRXOpTEp","transformation-title":"BHJ9SBY2xndjhT1z5Pkg","title":"hg9jaXvA4vWFaGu5p06n"});
 
 /***/ }),
 
@@ -77861,12 +77954,11 @@ var Geomtransformations = /*#__PURE__*/_createClass(function Geomtransformations
       if (!solution) {
         return;
       }
-      var level = +this.settings.level;
+      var level = +this.settings.level || 0;
       var figures;
       if (solution.figures.length === level + 2) {
         figures = solution.figures;
-      } else if (!level) {
-        // undefined or 0th level
+      } else if (level === 0) {
         figures = JSON.parse(JSON.stringify(_constants_Level1__WEBPACK_IMPORTED_MODULE_14__.LEVEL1.figures));
       } else if (level === 1) {
         figures = JSON.parse(JSON.stringify(_constants_Level2__WEBPACK_IMPORTED_MODULE_15__.LEVEL2.figures));

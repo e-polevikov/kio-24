@@ -1,6 +1,18 @@
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/ActionControl/ActionControl.module.css ***!
   \**************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/Transformations/Transformations.module.css ***!
+  \******************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/Transformations/Transformations.module.css (1) ***!
+  \**********************************************************************************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/ActionControl/ActionControl.module.css (1) ***!
+  \******************************************************************************************************************************************************************************************************/
 .rdGJK_6TMrl0Mp_wCmGu {
   margin-top: 14px; }
 
@@ -8,49 +20,60 @@
   text-align: center; }
 
 .vm6tVHvqAm__wjG1ylls {
-  width: 100%;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  font-size: 22px; }
+  width: 95%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin: 2px;
+  font-size: 28px;
+  background-color: #F6F5F5;
+  color: #989898;
+  border: 4px solid #989898;
+  font-family: "Podkova", serif; }
+
+.vm6tVHvqAm__wjG1ylls:active {
+  background-color: white; }
 
 .C0zOrYxNCtvlZwxB7RWK {
-  margin-top: 8px;
+  margin-top: 16px;
   text-align: center; }
 
-.d3L0sqNO1jNVygJ9J4oa {
-  width: 50%;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  font-size: 36px; }
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/Transformations/Transformations.module.css (2) ***!
+  \**********************************************************************************************************************************************************************************************************/
+.CnHekT7WKQ3kfRXOpTEp {
+  display: flex;
+  margin: 2px;
+  padding: 2px;
+  align-items: center;
+  margin-bottom: 4px; }
 
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/Transformations/Transformations.module.css ***!
-  \******************************************************************************************************************************************************************************************************/
-.kua2aIuO_S6AgozdWn_e {
-  font-size: 20px; }
+.BHJ9SBY2xndjhT1z5Pkg {
+  text-align: left;
+  font-size: 20px;
+  margin-left: 18px;
+  font-family: "Raleway", sans-serif; }
 
-.L9ivKzwuf53kpN_z6rd_ {
-  margin-bottom: 6px; }
+.hg9jaXvA4vWFaGu5p06n {
+  font-size: 32px;
+  text-align: center;
+  font-family: "Podkova", serif; }
 
 /*!******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./tasks/geomtransformations/components/GeomStage/GeomStage.module.css ***!
   \******************************************************************************************************************************************************************************************/
 .D_jfXrTkRcgKl8SAfRVw {
-  display: flex; }
+  display: flex;
+  background-color: white; }
 
 .t7CgDiSVKbg4JYEgVJXN {
-  border: solid black 2px;
   overflow: auto;
-  padding: 10px;
-  margin: 6px;
-  width: 20%; }
+  padding: 4px;
+  width: 20%;
+  background-color: #F6F5F5; }
 
 .sbPnI_oLpT20Nv5mmb9E {
-  border: solid black 2px;
   overflow: auto;
-  width: 80%;
-  margin: 6px;
-  margin-left: 12px; }
+  width: 80%; }
 
 
 /*# sourceMappingURL=geomtransformations.css.map*/
